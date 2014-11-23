@@ -42,7 +42,7 @@ def tokenize(inputText, w):
 
     pLocs = []
     tokenSeqs = []
-    tokens = nltk.word_tokenize(inputText).lower()
+    tokens = nltk.word_tokenize(inputText.lower())
 
     # record paragraph break locations
     paragraphs = inputText.split('\n\n')
