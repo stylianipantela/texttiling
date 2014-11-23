@@ -1,31 +1,26 @@
 #!/usr/bin/python
-"""
-texttiling.py Implementation of the TextTiling Algorithm
 
-The implementation is based on the article by Marti A. Hearst
-with title TextTiling: Segmenting Text into Multi-Paragraph Subtopic Passages
-
-The algorithm can be broken down into three parts:
-1. Tokenization
-2. Lexical Score Determination
-     a) Blocks
-     b) Vocabulary Introduction
-3. Boundary Identification
-
-We decided to split our work so that we all have an clear idea of how 
-to specifically implement one of the parts above while looking at the 
-rest as well. I primarily focused on the implementation of the Vocabulary 
-Introduction for measuring scores. Notice that the Vocabulary Introduction 
-is one of the  two alternatives for measuring scores. Also, in order 
-to test I ran the algorithm on the article 
-http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0113812
-that has been saved inside the file article.txt. In the future we plan to 
-work on a generalized way of accessing pubmed article data. More details 
-can be found in the pubmed.py file.
-
-NOTE: The implementation of tokenization and boundary identification was down by Kevin and Dianna 
-respecitively.
-"""
+# *****************************************************************************
+#
+# Authors: Dianna Hu, Stella Pantela, Jonathan Miller, and Kevin Mu
+# Class: Computer Science 187
+# Date: December 1, 2014
+# Final Project - Implementation of the TextTiling Algorithm
+#
+# Description: This implementation is based on the article by Marti A. Hearst,
+# "TextTiling: Segmenting Text into Multi-Paragraph Subtopic Passages".
+#
+# The algorithm can be broken down into three parts:
+# 1. Tokenization
+# 2. Lexical Score Determination
+#     a) Blocks
+#     b) Vocabulary Introduction
+# 3. Boundary Identification
+#
+# Before running, please make sure that nltk is installed and that you download
+# the wordnet and stoplist corpuses. See README for instructions.
+#
+# *****************************************************************************
 
 from __future__ import division
 import re
@@ -56,9 +51,11 @@ def tokenize_string(input_str, w):
         input_str : A string to tokenize
         w: pseudo-sentence size
     Returns:
-        A tuple (token_sequences, unique_tokens), where:
+        A tuple (token_sequences, unique_tokens, paragraph_breaks), where:
             token_sequences: A list of token sequences, each w tokens long.
             unique_tokens: A set of all unique words used in the text.
+            paragraph_breaks: A list of indices such that paragraph breaks
+                              occur immediately after each index.
     Raises :
         None
     '''
@@ -99,7 +96,7 @@ def block_score(k, token_seq_ls, unique_tokens):
         token_seq_ls: list of token sequences, each of the same length
         unique_tokens: A set of all unique words used in the text.
     Returns:
-        list of block scores from gap k through gap (len(token_seq_ls) - k),
+        list of block scores from gap k through gap (len(token_seq_ls)-k-2),
         inclusive.
     Raises:
         None.
@@ -116,11 +113,10 @@ def block_score(k, token_seq_ls, unique_tokens):
             before_cnt += token_seq_ls[gap_index + j - k]
             after_cnt += token_seq_ls[gap_index + j + 1]
         
+        # calculate and store score
         numerator = 0.0
         before_sq_sum = 0.0
         after_sq_sum = 0.0
-        
-        # calculate and store score
         for token in unique_tokens:
             numerator += (before_cnt[token] * after_cnt[token])
             before_sq_sum += (before_cnt[token] ** 2)
@@ -292,8 +288,7 @@ def getBoundaries(lexScores, pLocs, w):
 def main(argv):
     '''
     Tokenize a file and compute gap scores using the algorithm described
-    in Hearst's TextTiling paper. Partial implementation, still needs
-    boundary detection.
+    in Hearst's TextTiling paper.
 
     Args :
         argv[1] : The name of the file to analyze
