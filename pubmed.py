@@ -43,7 +43,8 @@ def get_text(pubmedid):
 
 def main():
   ids = fetch_ids('nucleus')
-  get_text(ids[0])
+  print ids
+  # get_text(ids[0])
 
 
 
