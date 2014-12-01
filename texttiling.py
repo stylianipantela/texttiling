@@ -351,8 +351,6 @@ def precision_recall(original_breaks, new_breaks):
     print "Recall is " + str(recall)
 
 
-
-
 def main(argv):
     '''
     Tokenize a file and compute gap scores using the algorithm described
@@ -380,6 +378,8 @@ def main(argv):
         scores2 = vocabulary_introduction(token_sequences, w)
         boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
         boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
+        print boundaries1
+        print boundaries2
         writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
         writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
 
