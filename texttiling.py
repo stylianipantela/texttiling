@@ -70,22 +70,29 @@ def tokenize_string(input_str, w):
         tokens.extend(pgrph_tokens)
         token_count += len(pgrph_tokens)
         paragraph_breaks.append(token_count)
+    paragraph_breaks = paragraph_breaks[:-1]
 
-    # remove stop words
-    words = [word for word in tokens if word not in stop_words]
-    # lemmatize the words
-    words = [lemmatizer.lemmatize(word) for word in words]
-    unique_tokens = set(words)
     token_sequences = []
     index = 0  
     cnt = Counter() 
-    for i in xrange(len(words)):
-        cnt[words[i]] += 1
+    # split tokens into groups of size w
+    for i in xrange(len(tokens)):
+        cnt[tokens[i]] += 1
         index += 1
         if index % w == 0:
             token_sequences.append(cnt)
             cnt = Counter()
             index = 0
+
+    # remove stop words from each sequence
+    for i in xrange(len(token_sequences)):
+        token_sequences[i] = [lemmatizer.lemmatize(word) for word in token_sequences[i] if word not in stop_words]
+    # lemmatize the words in each sequence
+    for i in xrange(len(token_sequences)):
+        token_sequences[i] = [lemmatizer.lemmatize(word) for word in token_sequences[i]]
+    # get unique tokens
+    unique_tokens = [word for word in set(tokens) if word not in stop_words] 
+
     return (token_sequences, unique_tokens, paragraph_breaks)
 
 def block_score(k, token_seq_ls, unique_tokens):
@@ -110,8 +117,8 @@ def block_score(k, token_seq_ls, unique_tokens):
         before_cnt = Counter()
         after_cnt = Counter()
         for j in xrange(k+1):
-            before_cnt += token_seq_ls[gap_index + j - k]
-            after_cnt += token_seq_ls[gap_index + j + 1]
+            before_cnt += Counter(token_seq_ls[gap_index + j - k])
+            after_cnt += Counter(token_seq_ls[gap_index + j + 1])
         
         # calculate and store score
         numerator = 0.0
@@ -284,23 +291,46 @@ def getBoundaries(lexScores, pLocs, w):
 
     return sorted(list(parBoundaries))
 
+def writeTextTiles(boundaries, pLocs, inputText, outfile):
+    """
+    Get TextTiles in the input text based on paragraph locations and boundaries.
 
-def save_text(boundaries, token_sequences, outfile):
-    tokens = []
-    for seq in token_sequences:
-        tokens = tokens + list(seq)
+    Args:
+        boundaries: list of paragraph locations where subtopic boundaries occur
+        pLocs: list of token indices such that paragraph breaks occur after them
+        inputText: a string of the initial (unsanitized) text
 
-    current_offset = 0
-    with open(outfile, 'w+') as f:
-        for i, b in enumerate(boundaries):
-            f.write('Topic ' + str(i) + '\n')
-            f.write(' '.join(tokens[current_offset:b]) + '\n\n')
-            current_offset = b
-        f.close()
+    Returns:
+        A list of lists T such that T[i] is a list of paragraphs that occur
+        within one subtopic.
 
+    Raises:
+        None
+    """
 
+    textTiles = []
+    paragraphs = [s.strip() for s in inputText.splitlines()]
+    paragraphs = [s for s in paragraphs if s != ""]
 
-    # print text
+    print len(pLocs)
+    assert len(paragraphs) == len(pLocs) + 1
+    splitIndices = [pLocs.index(b) for b in boundaries]
+    startIndex = 0
+
+    # append section between subtopic boundaries as new TextTile
+    for i in splitIndices:
+        textTiles.append(paragraphs[startIndex:i + 1])
+        startIndex = i + 1
+    # tack on remaining paragraphs in last subtopic
+    textTiles.append(paragraphs[startIndex:])
+    
+    f = open(outfile, 'w')
+    for i, textTile in enumerate(textTiles):
+        f.write('SUB-TOPIC' + str(i) + '\n')
+        f.write('----------\n\n')
+        for paragraph in textTile:
+            f.write(paragraph + '\n\n')
+
 
 def main(argv):
     '''
@@ -321,8 +351,8 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 10
-        k = 6
+        w = 20
+        k = 10
         text = f.read()
         token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
         scores1 = block_score(k, token_sequences, unique_tokens)
@@ -331,7 +361,7 @@ def main(argv):
         print boundaries1
         boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
         print boundaries2
-        save_text(boundaries1, token_sequences, argv[2])
+        writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
 
 
 if __name__ == "__main__":
