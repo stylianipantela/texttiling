@@ -119,7 +119,7 @@ def block_score(k, token_seq_ls, unique_tokens):
         after_cnt = Counter()
         for j in xrange(current_k+1):
             before_cnt += Counter(token_seq_ls[gap_index + j - current_k])
-            after_cnt += Counter(token_seq_ls[gap_index + j + 1])
+            after_cnt += Counter(token_seq_ls[gap_index + j])
         
         # calculate and store score
         numerator = 0.0
