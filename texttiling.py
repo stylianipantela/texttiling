@@ -110,14 +110,15 @@ def block_score(k, token_seq_ls, unique_tokens):
     """
     score_ls = []
     # calculate score for each gap with at least k token sequences on each side
-    for gap_index in range(k, len(token_seq_ls) - k - 1):
-        before_block = token_seq_ls[gap_index - k : gap_index]
-        after_block = token_seq_ls[gap_index : gap_index + k]
+    for gap_index in range(1, len(token_seq_ls)):
+        current_k = min(gap_index, k, len(token_seq_ls) - gap_index - 1)
+        before_block = token_seq_ls[gap_index - current_k : gap_index]
+        after_block = token_seq_ls[gap_index : gap_index + current_k]
         
         before_cnt = Counter()
         after_cnt = Counter()
-        for j in xrange(k+1):
-            before_cnt += Counter(token_seq_ls[gap_index + j - k])
+        for j in xrange(current_k+1):
+            before_cnt += Counter(token_seq_ls[gap_index + j - current_k])
             after_cnt += Counter(token_seq_ls[gap_index + j + 1])
         
         # calculate and store score
