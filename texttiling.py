@@ -25,6 +25,7 @@
 from __future__ import division
 import re
 import sys
+import random
 import numpy as np
 from math import sqrt
 from collections import Counter
