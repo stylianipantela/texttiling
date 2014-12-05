@@ -25,6 +25,7 @@
 from __future__ import division
 import re
 import sys
+import random
 import numpy as np
 import os
 import glob
@@ -292,6 +293,24 @@ def getBoundaries(lexScores, pLocs, w):
 
     return sorted(list(parBoundaries))
 
+def random_breaks(prob, possible_breaks):
+    """
+    Return a list of subtopic boundaries, chosen randomly.
+    Args:
+        prob: Probability of choosing a given paragraph break to be a subtopic
+        boundary.
+        possible_breaks: Number of paragraph breaks.
+    Returns:
+        list of gap indices at which there is a predicted subtopic boundary.
+    Raises:
+        None.
+    """
+    breaks= []
+    for i in range(1, possible_breaks + 1):
+        if random.random() < prob:
+            breaks.append(i)
+    return breaks
+
 def writeTextTiles(boundaries, pLocs, inputText, outfile):
     """
     Get TextTiles in the input text based on paragraph locations and boundaries.
@@ -430,11 +449,14 @@ def main(argv):
                 pred_breaks3.append(paragraph_count)            
 
             num_pgraphs = len(paragraph_breaks)
-            write_results(out, original_section_breaks, pred_breaks1, num_pgraphs, k)
-            write_results(out, original_section_breaks, pred_breaks2, num_pgraphs, k)
-            write_results(out, original_section_breaks, pred_breaks3, num_pgraphs, k)
+            wk = int((len(paragraph_breaks) + 1)/(2 * (len(original_section_breaks) + 1)))
+            write_results(out, original_section_breaks, pred_breaks1, num_pgraphs, wk)
+            write_results(out, original_section_breaks, pred_breaks2, num_pgraphs, wk)
+            write_results(out, original_section_breaks, pred_breaks3, num_pgraphs, wk)
 
     out.close()
+
+
 if __name__ == "__main__":
   main(sys.argv)
 
