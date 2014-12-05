@@ -411,10 +411,10 @@ def main(argv):
         # get precision and recall
         print len(pred_breaks1)
         precision_recall(original_section_breaks, pred_breaks1)
-        window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
+        window_diff(original_section_breaks, pred_breaks1, int((len(paragraph_breaks) + 1)/(2 * (len(original_section_breaks) + 1))), len(paragraph_breaks))
         print len(pred_breaks2)
         precision_recall(original_section_breaks, pred_breaks2)
-        window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
+        window_diff(original_section_breaks, pred_breaks2, int((len(paragraph_breaks) + 1)/(2 * (len(original_section_breaks) + 1))), len(paragraph_breaks))
 
         ttt = TextTilingTokenizer()
         tiles = ttt.tokenize(text)
