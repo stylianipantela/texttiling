@@ -30,6 +30,7 @@ from math import sqrt
 from collections import Counter
 from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import stopwords
+from nltk.tokenize import TextTilingTokenizer
 
 lemmatizer = WordNetLemmatizer()
 stop_words = stopwords.words('english')
@@ -394,7 +395,7 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 28
+        w = 25
         k = 10
         num_breaks = int(f.readline())
         original_section_breaks = []
@@ -411,10 +412,16 @@ def main(argv):
         pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
         
         # get precision and recall
+        print len(pred_breaks1)
         precision_recall(original_section_breaks, pred_breaks1)
-        precision_recall(original_section_breaks, pred_breaks2)
         window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
+        print len(pred_breaks2)
+        precision_recall(original_section_breaks, pred_breaks2)
         window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
+
+        ttt = TextTilingTokenizer()
+        tiles = ttt.tokenize(text)
+        print len(tiles)
 
 if __name__ == "__main__":
   main(sys.argv)
