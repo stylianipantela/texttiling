@@ -33,137 +33,128 @@ SUB-TOPIC6
 
 2-DE and gel analysis
 
-SUB-TOPIC7
-----------
-
 Approximately 1200 g of protein was used to perform 2-DE with 24 cm, pH 47 linear gradient IPG strips (GE Healthcare, Uppsala, Sweden) as described , . The gels were visualized with the by Coomassie brilliant blue G-250, ammonium sulfate and phosphoric acid (GAP) staining method as described . Gel images were statistically analyzed using ImageMaster 2D Platinum software (Version 5.0,GE Healthcare). Three representative gels from three corresponding biological replicates (n = 3) were used to determine the differential protein spots. The protein spots with p-value<0.05 and relative volume ratio 2.0 or 0.5 (two fold change) were deemed differential.
 
-SUB-TOPIC8
+SUB-TOPIC7
 ----------
 
 The differential protein spots were identified by matrix-assisted laser desorption/ionization time-of-flight/time-of-flight mass spectrometry (MALDI TOF/TOF MS) as described . Briefly, the differential protein spots were manually excised, in-gel digested with trypsin, then dried in a vacuum. Mass spectra were obtained on an Ultraflex II MALDI-TOF/TOF Mass Spectrometer (Bruker Daltonics, Bremen, Germany). The spectra were analyzed with the flexAnalysis software (Version 3.2, Bruker-Daltonics, USA) and searched against the taxonomy of fungi (1,941,581 sequences) in the non-redundant NCBI database (NCBInr 20130706, including 26,682,258 sequences and 9,281,362,451 residues) using Mascot software (Version 2.3) as described . The peptide mass fingerprint (PMF) search parameters were: 300 ppm tolerance as the maximum mass error, MH+ monoisotopic mass values, allowance of oxidation (M) modifications, allowance for one missed cleavage, trypsin as the enzyme, and fixed modification of cysteine by carboxymethylation (carbamidomethylation, C). In addition, an tandem MS(MS/MS) ion search in the LIFT mode was performed under the above search conditions except with a ion tolerance of 0.3 Da. Good matches were classified as those having a threshold score (confidence intervals >95%) >75 for PMF and >45 for MS/MS. The identification focused on the protein spots with higher Mascot scores, maximum peptide coverage, matched peptide sequences from different species, particular position on the 2-DE gel, and with identification results obtained from both PMF- and MS/MS-based searches. Additionally, a Decoy database search was also performed to estimate the percentage of false-positive identifications for all samples. Protein identifications determined to be false with the decoy database were excluded from further study. Detailed information about the protein identification is provided in -. In addition, an in-house Blast-P search at NCBI (.) was performed to confirm all of the identifications and find their homologous proteins.
 
-SUB-TOPIC9
+SUB-TOPIC8
 ----------
 
 The identified proteins were further searched against UniProt () to confirm their functions. These proteins were further divided into different groups by the Functional Catalogue software () to obtain their corresponding COG (Cluster of Orthologous Groups of proteins) codes. Then, gene ontology (GO) pathway analysis was performed with Blast2-GO software (). Functional classifications of the identified proteins from the different races are provided in .
 
-SUB-TOPIC10
+SUB-TOPIC9
 ----------
 
 Total RNA was isolated from the same F1 and F4 samples used in the proteomic analysis. cDNA was generated using a reverse transcriptase kit (TaKaRa, Tokyo, Japan). Reverse transcription (RT)-PCR reactions were repeated 4 times for each biological replicate. The actin gene (NCBI No. JQ965663) of F. oxysporum was used as an internal control to normalize the template cDNA. The primers used are provided in .
 
-SUB-TOPIC11
-----------
-
 The statistical results are presented as the mean  standard deviation. Statistical analyses, including two-way analysis of variance, Duncan's multiple range tests, and multi-variant analysis were performed with a 5% level of significance using SPSS software (Version 12.0).
-
-SUB-TOPIC12
-----------
 
 To compare the growth patterns of races F1 and F4, 2-day liquid cultures were examined by light microscopy. Both mycelia and spores from F1 () and F4 () demonstrated similar morphology, which is consistent with our previous report that F1 and F4 had similar morphology when grown on potato dextrose agar medium . In a KK liquid medium, F1 and F4 showed similar growth curves () and similar changes in dry weight content from day 28 (). The mycelium concentration increased sharply after being cultured for 2 days, peaked at 4 days, and decreased at 6 days. After culturing for more than 6 days, the mycelium concentration as well as the dry weight content plateaued to some extent ().
 
-SUB-TOPIC13
+SUB-TOPIC10
 ----------
 
 Therefore, we carried out 2-DE for F1 and F4 proteins isolated from mycelia after culturing for 2, 4 and 6 days. The representative gels for both races at the different times are presented in . More than 900 protein spots were reproducibly detected on each GAP-stained gel. Some of these spots showed quantitative or qualitative changes over time. Both F1 and F4 showed some changes in their 2-DE profiles over time, and the differences were more obvious at different days (). Quantitative image analysis demonstrated that 136 protein spots were significantly changed in the two races (p<0.05) by> two-fold for at least one time point. Compared with F1, there were 24 up-regulated spots, 23 down-regulated spots, and 28 race-specific spots observed in F4 ().
 
-SUB-TOPIC14
+SUB-TOPIC11
 ----------
 
 In this study, 99 of the 136 differentially expressed protein spots were positively identified by either PMF or MS/MS (; ), including 59 unique proteins. The PMF spectra, peptide sequences, and Mascot searched results are listed in detail in the . A few spots were identified as being the same protein or representing isoforms. For example, seven spots (spots 5, 8690, and 92) were identified as catalase-peroxidase, four as ATP synthase (spots 38, 40, 46, and 49), four as phosphoglycerate kinase (spots 7, 13, 31, and 36), four as hexosaminidase (spots 12, 14, 35, and 98), four as galactosidase (spots 42, 43, 80, and 83), and four as l-amino acid oxidase (spots 39, 82, 84, and 91). Many highly abundant proteins, such as Mn-superoxide dismutase (spots 6, 15, and 28), NADP-dependent glycerol dehydrogenase (spots 4, 25, and 27), vacuolar protease A (spots 23, 24, and 29), and phospholipase B (spots 7678) also had several protein isoforms (; ).
 
-SUB-TOPIC15
+SUB-TOPIC12
 ----------
 
 To evaluate the MS identification quality, the theoretical and experimental ratios of molecular weight (Mr) and isoelectric point were determined. These obtained values are presented as radar axis labels (Mr ratio for radial value; isoelectric point ratio for annular value) in the radial chart in . In theory, if the identified proteins are the same ones from the same species, both the radial and annular values will be 1.0, and all the calculated spots will be located on the cyclical line 1.0 in radial chart. The more spots were observed near line 1.0, the higher quality the MS identifications obtained. We found that >95% of spots were located close to the cyclical line 1.0, indicating the good quality of MS identification for these proteins ().
 
-SUB-TOPIC16
+SUB-TOPIC13
 ----------
 
 Venn diagram analysis revealed that 48 and 51 proteins were respectively identified from F1 and F4 (). Among them, 29 proteins were specifically observed only in F1, and 28 proteins were specific to F4. Among the 42 shared proteins, 23 proteins were up-regulated in F4, whereas the other 19 proteins were more abundant in F1 (). For F1, 22, 25, and 30 proteins were respectively identified in the 2-, 4-, and 6-day culture samples (). For F4, 29, 27, and 29 proteins were respectively obtained in the 2-, 4- and 6-day culture mycelia (). Among the F1-specific proteins, three spots were detected only in the 2- and 4- days, five spots at only days 2 and 6, three spots at only days 4 and 6, and nine spots were detected on all three days. For F4, four proteins were specific to day 2 and 6, four proteins to days 2 and 6, 4 proteins at 4 and 6 days, and ten proteins were observed on all three days (; ).
 
-SUB-TOPIC17
+SUB-TOPIC14
 ----------
 
 To gain insight into the functions of these proteins, we further searched for their homologues with BLAST-P using the protein sequences as queries and/or searched the identified NCBI accession numbers against the UniProt database. A substantial number of spots were identified as protein isoforms or protein homologs, indicating that post-translation modifications (PTMs) are of significant importance for F. oxysporum. Further research may focus on uncovering the detailed functions of the isomeric forms and PTMs such as oxidation and phosphorylation.
 
-SUB-TOPIC18
+SUB-TOPIC15
 ----------
 
 We next examined the distribution of the 99 identified proteins in different fungal species and found that 46 of the proteins from F4 and 17 from F1 could be identified. On the other hand, 24 of the proteins were also found in F. oxysporum Fo5176, four proteins were seen in other Fusarium varieties, and eight proteins showed high similarity to proteins in other fungal species (; ). The 99 proteins were further classified into 11 groups based on their main cellular functions (). Among the 82 proteins to which functions could be assigned, the largest group were involved in carbohydrate transport and metabolism (CTM), followed by the posttranslational modification (PTM)-related chaperones, inorganic ion transport and metabolism (ITM)-related proteins, amino acid metabolism (ATM) and energy production and conversion (EPC). A relatively small proportion of the proteins is involved in coenzyme metabolism (COM), DNA replication, recombination and repair (DRR), transcription, translation, ribosome structure and biogenesis (TRR), and cell motility and secretion (CMS). Function could not be assigned to the remaining 17 proteins (; ).
 
-SUB-TOPIC19
+SUB-TOPIC16
 ----------
 
 GO biological process analysis of the 99 proteins revealed that most proteins are involved in antioxidation processes such as response to oxidative stress, superoxide metabolism, and cell redox homeostasis. Another large portion was involved in carbohydrate metabolism. Followed proton transport coupled with ATP synthesis or ATP hydrolysis, glycolysis, and proteolysis (). GO molecular function analysis of the 99 proteins revealed that the largest portion was showed strong oxidoreductase activity (OXDA) (). Another large portion has ATP-binding activities, catalase activities, cation ion-binding activities, and kinase activities. Several of proteins were predicted to enzymes with endopeptidase activity, galactosidase activity, hydrolase activity, and protein binding (). At the GO-cellular component level, 88 of the 99 identified proteins showed no detailed locations. Five proteins deemed to be involved in proton transport, and several enzymes were predicted to be integrated into phosphopyruvate hydratase complex, eukaryotic translation elongation factor complexes, or to be located in the endoplasmic reticulum ().
 
-SUB-TOPIC20
+SUB-TOPIC17
 ----------
 
 The subcellular locations of the 99 proteins were further predicated by TargetP, which demonstrated that 37 proteins function in the secretory pathway, suggesting that secreted proteins are important for banana wilt. The predominant proportion fell into the other location category or could not be assigned to a location, which is similar to what was observed in the GO-cellular component classifications ().
 
-SUB-TOPIC21
+SUB-TOPIC18
 ----------
 
 As our primary interest in this study was to identify virulence-related proteins, we performed further in-depth analysis of the 46 proteins form F4 ( and ). Several of these proteins had more than three isoforms, including catalase-peroxidase, galactosidase, glucanosyltransferase, phosphoglycerate kinase and ATP synthase. TargetP analysis predicted that 18 proteins are in the secretary pathway, 5 localize to mitochondria, 14 are in other locations and 10 have no known locations. Compared to TargetP, GO-cellular component analysis produced very limited location information ().
 
-SUB-TOPIC22
+SUB-TOPIC19
 ----------
 
 Functional analysis by COG revealed that approximately half of the F4-specific proteins are involved in carbohydrate transport and metabolism, including glucanosyltransferase, galactosidase, phosphoglycerate kinase, enolase, and chitinase. Many F4 proteins are also involved in inorganic ion transport and metabolism (8 isoforms of catalase-peroxidase), energy production and conversion (4 isoforms of ATP synthase and one glutathione reductase), and posttranslational modification related chaperones (). Molecular function analysis revealed that most of these proteins such as catalase-peroxidase and glucanosyltransferase, have catalytic activity, followed by cation ion binding (glucanosyltransferase, chitinase and enolase), heme binding (catalase-peroxidase), and kinase activity (phosphoglycerate kinase and adenosine kinase). Another six proteins were identified as enzymes involved in ATP binding or hydrogen ion transporting ATP synthase activity. The results obtained from both the GO analysis and COG classification of the 99 differential proteins revealed that enzymes related to carbohydrate metabolism, ion transporting and energy production might play important role in the F4 induced banana wilt.
 
-SUB-TOPIC23
+SUB-TOPIC20
 ----------
 
 Comparison of the transcript accumulation and protein abundance in F1 and F4 can broaden our understanding of the roles of particular proteins on the induction of banana Fusarium wilt. To further evaluate the correlation between the abundance of the identified proteins and the expression of their corresponding genes, mRNAs encoding 15 proteins were selected for RT-PCR analysis. This subset included 13 F4-specific proteins or proteins that were more abundant in F4: galactosidase (spot 80), chitinase 1 (spot 79), glutathione reductase (spot 20), oxidoreductase (spot 62), glutamine amidotransferase (spot 2), adenosine kinase (spot 3), vacuolar protease A (spot 24), amidase (spot 81), l-amino acid oxidase (spot 82), serine carboxypeptidase (spot 85), serine carboxypeptidase (spot 17), homoserine dehydrogenase (spot 19) and NADP-dependent glycerol dehydrogenase (spot 4). Two F1 abundant proteins named phosphoglycerate kinase (spot 7), and mitochondrial peroxiredoxin (spot 10) were also selected.
 
-SUB-TOPIC24
+SUB-TOPIC21
 ----------
 
 The accumulation patterns of proteins and their transcripts were similar for all the selected proteins except for amidase (; ). After culturing for 2 or 4 days, most of the selected genes showed higher expression in F4 than in F1. At day 6, both proteins and mRNA levels were reduced to some extent (). Taken together, functional analysis of the F4-specific proteins revealed that some enzymes, including catalase-peroxidase, galactosidase, glucanosyltransferase, phosphoglycerate kinase, mitochondrial ATP synthase, glutathione reductase, adenosine kinase, S-adenosylmethionine synthetase, enolase, and chitinase, are involved in a variety of metabolic pathways and biological processes in F4.
 
-SUB-TOPIC25
+SUB-TOPIC22
 ----------
 
 It is assumed that the pathogenicity of fungi is controlled by multiple proteins. Hence identification of the virulence-related proteins is of great significant importance for uncovering the pathogenic mechanisms. It is also likely that proteins differentially represented in F1 and F4 account for the different pathogenicity of the two races. The virulence proteins that have been characterized from F1 and F4 are involved in signal transduction, transcription, defense system, and colonization . They include G-proteins , mitogen-activated protein kinase , signal transcription factor , , glucosidase , polygalacturonase , and mitochondrial carrier protein . Proteomics studies in Fusarium graminearum ,  and F. oxysporum ,  identified 174 cell wall proteins and 19 proteins carrying predicted signal peptides in F. oxysporum, including glucose-regulated protein, acid phosphatase, cell wall glucanosyltransferase, glucanase, secreted aspartic protease, and vacuolar protease . These studies also identified 197 proteins in F. oxysporum MSA 35 that were involve in virulence and/or antagonism other fungi, and some of which may affect the fitness of defense mechanisms .
 
-SUB-TOPIC26
+SUB-TOPIC23
 ----------
 
 In this research, we found 37 proteins containing predicted signal peptides such as catalase-peroxidase 2, superoxide dismutase, l-amino acid oxidase, carboxy-muconate cyclase and galactosidase. Therefore, we inferred that, during the infection process, proteins with signal peptides in F. oxysporum might be secreted into the plant extracellular space, which eventually causes the banana plant wilt. We also obtained some proteins that are involved in virulence, antagonism other fungi, and defense, including serine carboxypeptidase, superoxide dismutase, disulphide isomerase, and lactonohydrolase. Some of these proteins were predicted and/or reported to function as virulence factors ( and ), such as peptidase C1 , carboxypeptidase , , glucanosyltransferase , , S-adenosylmethionine synthetase , peroxiredoxin , chitinase 1 , catalase-peroxidase , and amidase . These results indicated that signal peptidescontaining proteins and virulence factors might be important contributors to the strong virulence seen in Fusarium-induced banana wilt.
 
-SUB-TOPIC27
+SUB-TOPIC24
 ----------
 
 To investigate the strong pathogenicity of F4, Li et al. isolated the mutant gene foABC1 from F4. This gene has 48% sequence similarly with the rice homology and encodes an ABC transporter responsible for pumping toxin out of the fungal cell during the pathogenic process . Chen et al. cloned esyn1 gene from F4, which encodes a transcription factor important for regulation of biosynthesis of enniatin and beauvericin . Our proteomic data demonstrate that almost all of the identified F4 proteins (40 of 46) are functional enzymes (). One of these enzymes, the cell wallanchored glycoside hydrolase -1-3-glucanosyltransferase, can directly affect fungal physiology . Inactivation of a glucanosyltransferase in F. oxysporum results in a reduced virulence in tomato , , whereas deletion of a similar gene in the maize rot fungus of Fusarium. verticillioides affects conidiation and cell wall structure but not virulence . The glucanosyltransferase gene Bbgas1 knockout mutant shows reduced virulence in Galleria mellonella . Also in Aspergillus fumigatus, mutation of a glucanosyltransferase gene resulted in slow growth, abnormal conidiogenesis, and low virulence .
 
-SUB-TOPIC28
+SUB-TOPIC25
 ----------
 
 S-adenosylmethionine (SAM) synthetase catalyzes the joining of methionine and ATP to produce the ubiquitous methyl group donor SAM. Overexpression of samA improves the development and secondary metabolism of the filamentous fungus Aspergillus nidulans . In the budding yeast Schizosaccharomyces pombe, low expression of sam1 reduces the growth, mating, and sporulation, whereas sam1 overexpression leads to the methionine sensitive-growth . Overaccumulation of SAM synthase in the bacterium Bacillus subtilis results in increased spontaneous sporulation . Low abundance of SAM synthase in Escherichia coli blocks filament formation in the septal ring . FBA, a class II family aldolase, is widely detected in organisms from fungi to prokaryotes, and the homodimer catalyzes the aldol cleavage of fructose bisphosphate using a zinc ion. In Candida albicans, mutation of the FBA gene perturbs growth but is not lethal for this fungus . In E. coli, FBA is the primary enzyme that counters of nickel toxicity . Among the potential virulence enzymes, phosphoglycerate kinase is widely considered as a key enzyme in the reversible transfer of a phosphate from 1,3-bisphosphoglycerate to ADP, thereby resulting in the formation of 3-phosphoglycerate and ATP in glycolysis .
 
-SUB-TOPIC29
+SUB-TOPIC26
 ----------
 
 The upregulation or specific expression of some enzymes in F4 might play a key role in its strong pathogenicity. Among the F4-specific proteins, amidase likely helps this fungus to efficiently adhere to banana root, a key first event in infection by pathogenic microorganism. Autolysin amidase in Listeria monocytogenes promotes an efficient listerial adherence to mouse hepatocyte, and thus listerial pathogenicity . This process depends on the activation of glycosaminoglycan in L. monocytogenes . Glycosaminoglycan, as a main extracellular matrix component, plays important roles in cell communication through binding to several proteins . Similar to glycans, sulfur is also a vital element for all living organisms. Once sulfide is synthesized, it is condensed with O-acetyl-L-serine under the catalytic action of serine lyase or cysteine synthetase. Serine acetyltransferase and O-acetyl serine lyase can form a multi-enzyme complex in bacteria. In addition, the cysteine molecule may play a crucial role in the redox signaling of different stress processes , . Our proteomic results demonstrate that O-acetylhomoserine (thiol)-lyase is upregulated (spot 63) or induced (spot 18) in F4. Therefore, F4 might be relatively more sensitive to changes in redox conditions in plant cells compared with F1. Serine-type carboxypeptidase cleaves the C-terminal peptide bond in peptides, thereby releasing the terminal amino acid . This peptidase is widely observed in fungi, plants, and animals and has diverse biological functions . In Aspergillus oryzae, this enzyme is required for normal hyphal growth, and the deletion strain formes fewer conidia on agar plates . We identified two protein spots in F4 as carboxypeptidase, indicating that carboxypeptidase might be important for hyphal growth and conidiation of F. oxysporum.
 
-SUB-TOPIC30
+SUB-TOPIC27
 ----------
 
 Among the F4-specific proteins, catalase-peroxidase (KatG) is a unique bifunctional oxidoreductase with peroxidatic and catalatic activities within a single active site , . KatG can be secreted out of fungal cells to perform distinct functions . Extracellular KatG is exclusively found in phytopathogenic fungi . In the rice blast fungus Magnaporthe grisea, KatG protects the pathogen from the increased level of H2O2 in rice epidermal cells at the early stage of infection . Secretion KatG, as well as another catalase, is important for both hyphal growth and maintenance of the integrity of the fungal cell wall . In Verticillium longisporum, KatG protectes the fungus from the oxidative response of host plants at advanced stages of the disease . In our present study, we identified several protein spots as catalase-peroxidase, one of them being more abundant in F4 than in F1, and the others were specially detected only in F4 (), indicating that this enzyme might be key in the virulence of F. oxysporum.
 
-SUB-TOPIC31
+SUB-TOPIC28
 ----------
 
 Many glycoside hydrolases were found to be overrepresented in F4. These enzymes are responsible for the hydrolysis of sugar residues and polysaccharides. The chitinolytic enzymes chitinase and hexosaminidase were identified in F4-specific spots in this research. Chitinase hydrolyzes -1,4 linkages in chitin polymers, endolytically producing chitooligosaccharide and chitobiose. Although hexosaminidase does not directly hydrolyze chitin polymers, it has high acetylhexosaminidase activity, which helps to degrade chitooligosaccharide into monomers . Overexpression of chitinase 3 gene can improved fungal cell wall formation in both hyphal tips and germinated spores . The exo-acting galactosidase enzyme mainly cleaves -1-6-linked d-galactosyl residues into oligosaccharides, polysaccharides, and synthetic substrates. Upon infection with Fusarium moniliforme and Fusarium proliferatum, maize grain produces some hydrolytic enzymes, such as galactosidase, glucosidase and glucosaminidase, which enable the fumonisin-producing Fusarium to rapidly infect living maize grain . In our study, chitinase and -galactosidase were specially expressed in F4 (), which might help this race to efficiently infect banana plants.
 
-SUB-TOPIC32
+SUB-TOPIC29
 ----------
 
 Proteins involved in carbohydrate metabolism are important for energy production because they participate in glycolysis to produce ATP. In Paracoccidioides Pb 01, the high abundance of several enzymes, such as enolase, FBA, phosphoglycerate kinase, and triosephosphate isomerase, leads to relatively higher anaerobic metabolism of glucose and energy production . Here, we found that several enzymes involved in carbohydrate metabolism were more highly expressed in F4 than in F1. Among them, chitinase 1 and -galactosidase 2 are important for the strong virulence of F4 , . Glucose-6-phosphate 1-epimerase (spot 99) participates in glycolysis and gluconeogenesis by catalyzing the reversible conversion of -d-glucose-6-phosphate to -d-glucose-6-phosphate . Enolase (spot 22), a ubiquitous glycolytic enzyme, catalyzes the dehydration of 2-phospho-d-glycerate to phosphoenolpyruvate in glycolysis. Additionally, adenosine kinase (spot 3) is important for the regulation of cellular levels of adenosine and its nucleotides. The above three enzymes are directly involved in glycolysis, and their higher expression levels in F4 might help this race to survive the plant defense system. ATP synthesis is necessity for all organisms and depends on the transmembrane hydrogen ion/proton transporting activity of ATP synthase. We identified 4 protein spots as ATP synthase (spots 38, 40, 46, and 49). Although there is no direct evidence that these enzymes contribute to the virulence of F. oxysporum, these proteins appear to be of some importance for F4. Future knockout studies of these genes to produce weakly pathogenic or non-pathogenic strains will provide additional insight for further investigation of banana Fusarium wilt.
 
-SUB-TOPIC33
+SUB-TOPIC30
 ----------
 
 Proteins involved in ion transport activate key components of the enzymatic antioxidant machinery, which is important for scavenging reactive oxygen species (ROS) and maintaining higher redox states in plant cells under high salinity . ROS production by plants is part of the general defense response against pathogenic microorganisms , . Expression of catalase in F4 is significantly induced in F4 after exposure to exogenous H2O2 . Therefore, catalase may participate in the elimination of ROS produced by F4 infection in banana root. Peroxiredoxins, which can regulate H2O2 levels to cause damage and/or affect signal transduction processes, play important roles in proliferation, differentiation, and apoptosis pathways , . Several catalase-peroxidase isoforms were identified in our study, which may scavenge ROS as well as combine with other ion transporters to play important roles in the Fusarium-induced infection of banana wilt.
