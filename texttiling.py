@@ -136,18 +136,15 @@ def block_score(k, token_seq_ls, unique_tokens):
 
 def vocabulary_introduction(token_sequences, w):
   """
-  Computes lexical score for the gap between pairs of text blocks 
-  Text blocks contain w adjacent sentences and act as moving windows
-  Low lexical scores preceded and followed by high lexical scores
-  would mean topic shifts
-
-  w could be the average paragraph length for future implementations
+  Computes lexical score for the gap between pairs of text sequences.
+  It starts assigning scores after the first sequence.
 
   Args:
     w: size of a sequence
 
   Returns:
-    list of scores where scores[i] corresponds to the score at gap position i
+    list of scores where scores[i] corresponds to the score at gap position i,
+    that is the score after sequence i.
 
   Raises:
     None
@@ -156,8 +153,8 @@ def vocabulary_introduction(token_sequences, w):
   new_words2 = set(token_sequences[0])
   w2 = w * 2
 
-  # score[i] corresponds to gap position i, score[0] = 1 for the first position
-  scores = [1]
+  # score[i] corresponds to gap position i
+  scores = []
   for i in xrange(1,len(token_sequences)-1):
     # new words to the left of the gap
     new_wordsb1 = set(token_sequences[i-1]).difference(new_words1)
@@ -166,7 +163,7 @@ def vocabulary_introduction(token_sequences, w):
     new_wordsb2 = set(token_sequences[i+1]).difference(new_words2)
 
     # calculate score and update score array
-    score = len(new_wordsb1) + len(new_wordsb2) / w2
+    score = (len(new_wordsb1) + len(new_wordsb2)) / w2
     scores.append(score)
 
     # update sets that keep track of new words
