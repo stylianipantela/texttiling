@@ -136,18 +136,15 @@ def block_score(k, token_seq_ls, unique_tokens):
 
 def vocabulary_introduction(token_sequences, w):
   """
-  Computes lexical score for the gap between pairs of text blocks 
-  Text blocks contain w adjacent sentences and act as moving windows
-  Low lexical scores preceded and followed by high lexical scores
-  would mean topic shifts
-
-  w could be the average paragraph length for future implementations
+  Computes lexical score for the gap between pairs of text sequences.
+  It starts assigning scores after the first sequence.
 
   Args:
     w: size of a sequence
 
   Returns:
-    list of scores where scores[i] corresponds to the score at gap position i
+    list of scores where scores[i] corresponds to the score at gap position i,
+    that is the score after sequence i.
 
   Raises:
     None
@@ -156,8 +153,8 @@ def vocabulary_introduction(token_sequences, w):
   new_words2 = set(token_sequences[0])
   w2 = w * 2
 
-  # score[i] corresponds to gap position i, score[0] = 1 for the first position
-  scores = [len(new_words2)/w2]
+  # score[i] corresponds to gap position i
+  scores = []
   for i in xrange(1,len(token_sequences)-1):
     # new words to the left of the gap
     new_wordsb1 = set(token_sequences[i-1]).difference(new_words1)
@@ -166,7 +163,7 @@ def vocabulary_introduction(token_sequences, w):
     new_wordsb2 = set(token_sequences[i+1]).difference(new_words2)
 
     # calculate score and update score array
-    score = len(new_wordsb1) + len(new_wordsb2) / w2
+    score = (len(new_wordsb1) + len(new_wordsb2)) / w2
     scores.append(score)
 
     # update sets that keep track of new words
@@ -176,10 +173,6 @@ def vocabulary_introduction(token_sequences, w):
   # special case on last element
   b1 = len(set(token_sequences[len(token_sequences)-1]).difference(new_words1))
   scores.append(b1/w2)
-
-  print "sizes"
-  print len(scores)
-  print len(token_sequences)
 
   return scores
 
@@ -399,7 +392,7 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 25
+        w = 20
         k = 10
         num_breaks = int(f.readline())
         original_section_breaks = []
@@ -425,8 +418,17 @@ def main(argv):
 
         ttt = TextTilingTokenizer()
         tiles = ttt.tokenize(text)
+        nltk_section_breaks = []
+        paragraph_count = 0
+        for tile in tiles:
+            tile = tile.strip()           
+            paragraph_count += tile.count("\n\n") + 1
+            nltk_section_breaks.append(paragraph_count)
         print len(tiles)
+        print nltk_section_breaks
 
+        precision_recall(original_section_breaks, nltk_section_breaks)
+        window_diff(original_section_breaks, nltk_section_breaks, k, len(paragraph_breaks))
 if __name__ == "__main__":
   main(sys.argv)
 
