@@ -1,0 +1,238 @@
+0.666666666667,0.769230769231,1.0,
+0.619047619048,1.0,0.727272727273,
+0.666666666667,0.923076923077,0.636363636364,
+1.0,0.384615384615,1.0,
+0.590909090909,1.0,1.0,
+0.611111111111,0.846153846154,0.583333333333,
+0.5,0.125,1.0,
+0.285714285714,0.75,1.0,
+0.25,0.625,1.0,
+0.4375,0.5,0.826086956522,
+0.424242424242,1.0,1.0,
+0.444444444444,0.857142857143,0.869565217391,
+0.384615384615,0.833333333333,1.0,
+0.375,1.0,1.0,
+0.375,1.0,1.0,
+0.727272727273,0.727272727273,1.0,
+0.55,1.0,1.0,
+0.625,0.909090909091,1.0,
+0.625,0.625,0.647058823529,
+0.296296296296,1.0,1.0,
+0.291666666667,0.875,1.0,
+0.636363636364,0.583333333333,0.722222222222,
+0.44,0.916666666667,1.0,
+0.333333333333,0.666666666667,0.944444444444,
+0.428571428571,0.5,0.896551724138,
+0.424242424242,0.777777777778,1.0,
+0.433333333333,0.722222222222,0.965517241379,
+0.0,0.0,0.578947368421,
+0.075,0.75,1.0,
+0.0416666666667,0.25,1.0,
+ the data points are independent. Independence means that the position of one data point does not influence the position of the next data point, that is, data are not auto-correlated. If the process shifts, these conditions are no longer true and patterns of non-random variation may be detected by statistical tests.
+
+SUB-TOPIC3
+----------
+
+Thus, run charts are useful aids for improving health care processes or for detection of process degradation .
+
+Runs analysis have been studied since the 1940s, and several tests have been proposed to detect non-random patterns in a data sequence.
+
+SUB-TOPIC4
+----------
+
+A run is defined as a sequence of like items that is preceded and followed by one or more items of another type or by none at all. Items can be plus and minus signs, heads and tails, odd and even numbers, and numbers above and below a certain value, for example the median. Runs analysis are useful for such different purposes as digital image analysis, looking for extra-terrestrial intelligence, testing for roulette fraud and serial correlation among residuals in a regression analysis  and for detection of shifts in health care processes. Runs analysis makes no assumptions on the theoretical distribution of data.
+
+SUB-TOPIC5
+----------
+
+The  was originally proposed by Swed and Eisenhart for testing the randomness of a sequence . If the number of runs is too small or too large, it is an indication that the sequence is not random, e.g. positively or negatively autocorrelated. Especially, if the number is too small it will indicate that the process centre may be shifting. To do the runs test one must either do some rather complicated calculations or look up the limits for the expected number of runs in tables based on the total number of runs in the sequence and the number of items of each kind. Simplified tables for use with run charts have been developed for run charts up to 60 data points , . For more than 60 data points, the limits can be calculated using the normal approximation of the runs distribution function .
+
+SUB-TOPIC6
+----------
+
+Chen has proposed an alternative way of performing the runs test . Instead of looking at the number of runs, Chen suggests to look at the number of shifts (crossings) in the sequence. In a run chart crossings are easily counted by counting the number of times the graph crosses the median line. The number of crossings in a random sequence will follow a binomial distribution with success probability of 0.5. Thus, the lower 5% prediction value for number of crossings is the lower 5th percentile from the cumulative distribution function of the binomial distribution with a success probability of 0.5 and n  1 trials where n is the number of useful observations, that is, observations that do not fall on the median. The lower limit can be looked up in a statistical table or calculated using a spreadsheet or statistical software. For example, with a run chart of 20 data points,  than 6 crossings would indicate that the process is shifting.
+
+SUB-TOPIC7
+----------
+
+Chen's method makes it easy to automate the calculation of signal limits. In our experience, Chen's method is also simpler to understand and teach, and counting crossings is easier for most people than counting runs.
+
+SUB-TOPIC8
+----------
+
+Another widely used test for non-random variation in run charts is the . A shift is an unusually long run of consecutive data points either above or below the median. Data points that fall on the median are not counted, that is they do not contribute to the run, nor do they break it. The cut-off value to define unusually long varies in the literature. Perla defines a shift as six or more consecutive data points on the same side on the median , while Carey and others recommend seven or eight data points depending on the purpose of the run chart and the total number of data points available .
+
+SUB-TOPIC9
+----------
+
+The shift test is based on the theory of long runs. Schilling showed that the expected length of the longest run in a sequence depends on the total number of elements in the sequence and is predictable within limits . The expected length of the longest run either above or below the median is , where n is the total number of data points not on the median (useful observations). Approximately 95% of the longest runs are predicted to be within +/ 3 of the expected value. For the purpose of detecting a change in process position, a shift, we are interested in the upper prediction limit. The upper prediction limit for longest run is  rounded to the nearest integer. For example, if one has a run chart of 20 data points, the expected longest run would be 4, and a run of  than 7 data points would indicate a shift in process level.
+
+SUB-TOPIC10
+----------
+
+The  is also commonly used. A trend is an unusually long run of data points all going up or down. Conceptually, a trend is merely a special form of a run, where like items are defined as data points that are bigger or smaller than the preceding one. The trend test was developed by Olmstead who provided tables and formulas for the probabilities of trends of different lengths depending on the total number of data points . For example, with less than 27 data points in total, the chance of having a trend of 6 or more data points going up or down is less than 5%. Note that Olmstead defines a trend as the number of jumps rather than the number of data points that surround the jumps (which, of cause, is one more than the number of jumps).
+
+SUB-TOPIC11
+----------
+
+Although the trend rule has been shown to be ineffective , it is still widely used in health care.
+
+Willemain has suggested a type of runs analysis using , which is a metric based on lengths of adjacent runs. However, this method is only appropriate in data rich environments with, say, thousands of observations per day, which is rarely the case in health care .
+
+SUB-TOPIC12
+----------
+
+In addition to the above mentioned rules, it is recommended also to look for other unnatural patterns in data that may indicate the presence of non-random variation. These patterns may include cyclic behaviour or obviously different data points.
+
+SUB-TOPIC13
+----------
+
+The aim of this study was to propose a set of rules that applied together will detect process improvement or degradation as soon as possible while having a low rate of false signals when only random variation is present.
+
+SUB-TOPIC14
+----------
+
+We studied the signal rates in simulated run charts with 2 to 100 data points under influence of linear drifts and non-linear shifts in the sample distribution mean.
+
+SUB-TOPIC15
+----------
+
+We wrote the simulation program in the R programming language (v. 3.1.1) and used some functions from the add-on package reshape2 (v. 1.2.4) for data management and functions from the lattice package (v. 0.2029) for graphs . The programme is available for download as supplementary material to this article ().
+
+SUB-TOPIC16
+----------
+
+For the study on the effect of shifts in process mean, the program did 1000 simulations of each run chart of length 2 to 100 with samples from a normal distribution with a standard deviation of 1 and distribution mean of 0.0, 0.5, 1.0, 1.5, and 2.0 respectively. In addition, the run charts with sample mean of zero was analysed with both a fixed median of 0 and with a floating median defined as the actual median of the numbers in the run chart. All other analyses were done with a fixed median of 0.
+
+SUB-TOPIC17
+----------
+
+To study the effect of linear drift in process mean, the program did 1000 simulations of each run chart of length 2 to 100 while introducing an increase of 0.0, 0.1, 0.2, and 0.3 respectively in distribution mean between consecutive sample data points.
+
+We studied the following rules for detection of non-random variation:
+
+Shift rule: A shift is present if any run of consecutive data points on the same side of the median is longer than the prediction limit.
+
+SUB-TOPIC18
+----------
+
+Crossings rule: A crossings signal is present if the number of times the graph crosses the median is smaller than the prediction limit.
+
+SUB-TOPIC19
+----------
+
+Trend rule: A trend is present if the longest run of data points going up or down is longer than the prediction limit.
+
+SUB-TOPIC20
+----------
+
+Prediction limits for shifts and crossings in run charts with 10 to 100 data points are tabulated in . A trend was signalled if the p-value calculated using formula 6 in Olmstead's paper was less than 0.05 .
+
+For comparison, we also studied the , which is used with Shewhart control charts. The three-sigma signal is triggered when any data point is further than 3 standard deviations away from the overall process average . Since simulation data were created from a standard normal distribution with a known mean of 0 and a standard deviation of 1, we used +/ 3 as sigma limits.
+
+SUB-TOPIC21
+----------
+
+The outcome from each simulation was the proportion of run charts which triggered the rule, that is, the simulated power of the test with respect to detection of the shift under study.
+
+SUB-TOPIC22
+----------
+
+shows that when no shift is present in the data, the (false) signal rates for the shift and crossings rules suggested in this paper are approximately 5% and independent of the number of data points in the run chart. The (true) signal rates increase when shifts are introduced in the data. The larger the shift, the quicker the run charts pick up the signal.
+
+SUB-TOPIC23
+----------
+
+For example, when a shift in process mean of 1 standard deviation is present, approximately 70% and 60% of run charts with 20 data points will signal the shift and crossings rules respectively. If the shift is more than 1.5 standard deviation, over 90% of run charts with 20 data points detect the change.
+
+SUB-TOPIC24
+----------
+
+The shift rule has a slightly higher signal rate with a fixed median compared to a floating median. The difference levels out as the number of data points increases.
+
+SUB-TOPIC25
+----------
+
+When combining the shift and crossings rules so that a signal is considered present if either the shift or the crossings rule is triggered, the sensitivity to shifts in data increased at the cost of a slightly elevated false signal rate (results not shown).
+
+The three-sigma rule is less sensitive to shifts up to 2 standard deviations than the shift and crossings rules and shows an increasing false signal rate as the number of data points increases. At 40 data points the false signal rate is around 10%. It should be noted that, in practice, it is common to adjust the sigma limits to the number of data points to achieve a fixed false signal rate.
+
+SUB-TOPIC26
+----------
+
+shows that even when a drift of 0.3 standard deviation is added to each sample data point, only about 20% of run charts with 100 data points will signal the trend rule. In contrast, the shift and crossings rules pick up the drift with almost 100% certainty already at 20 data points. Thus, the trend rule is virtually useless for detection of linear drift over time, the purpose it was intended for.
+
+SUB-TOPIC27
+----------
+
+This simulation study shows that the suggested shift and crossings rules are effective in detecting moderate to large shifts and drifts in process level over time while keeping the false signal rate constant around 5% and independent of the number of data points in the chart.
+
+The trend rule is performing so poorly compared to the other rules, that we question its appropriateness.
+
+SUB-TOPIC28
+----------
+
+To our knowledge, this study is the first to study the performance of run charts under simulated shifts and drift in process mean.
+
+SUB-TOPIC29
+----------
+
+Traditionally, the performance of Shewhart control charts is characterized by the average run length (ARL) to signal. ARL is the average number of data points it takes to pick up a change in process level. For practical and didactical reasons we chose to plot signal rates as a function of run chart length as our metric. First, it turned out to be impractical to identify ARL for our run chart rules when no signals were present. Because the prediction limits are dynamically adapted to the number of data points these simulations often entered endless loops creating extremely long data sequences making the simulation programme run for several days without completion. Second, the graphical presentation of signal rates are, in our experience, more intuitively understandable for clinicians without specific statistical training than are ARL's.
+
+SUB-TOPIC30
+----------
+
+It may be argued that the simulations used in our study are for a fixed number of observations, while in practice one will apply the run chart rules sequentially, deciding after each data point if non-random variation is present. However, it is our experience from using these rules in practice for several years on real life data that the rules work well in practice and offer good protection against false positive signals and are effective in detecting real change in process performance.
+
+SUB-TOPIC31
+----------
+
+The shift rule proposed in this study is more conservative than the shift rules that are usually suggested , , . Perla and Provost suggest using only 6 data points to signal a shift. Carey suggests 7 data points for a run chart with up to 19 data points. The shift rule we suggest takes at least 8 data points to signal a shift if one has between 12 and 22 data points in total. Of course, the choice of cut off value is a trade-off between the need to quickly pick up a signal when the process is changing and the risk of picking up false signals when no change is present. One should be aware that relaxing the rules will result in higher false signal rates.
+
+SUB-TOPIC32
+----------
+
+Run charts have several advantages over control charts. First, run charts are easier to construct and teach. Pen and paper is all it takes. Second, run charts make no assumptions about the theoretical distribution of data, which make them especially useful when baseline data are not available to characterise the process prior to a control chart analysis. Third, when using the shift and crossings rules proposed in this study rather than the usual fixed signal limits, the false signal rate is independent of the number of data points. Finally, as our results show, the run chart rules we propose have higher sensitivity and specificity to moderate (~1.5 SD) changes in process performance than the sigma rule alone.
+
+SUB-TOPIC33
+----------
+
+As a consequence, we suggest always studying process data with run charts before applying control charts. If a run chart identifies non-random variation, it could mean many things including a lack of independence in the data, which would invalidate the control chart.
+
+SUB-TOPIC34
+----------
+
+However, having no control limits, run charts are not capable of determining if any single data point deviates significantly from the rest. Thus run charts will not detect large and transient shifts and may be slower than control charts to detect large (>2 SD) permanent shifts in process mean. Also, run charts are unable to determine if the process is statistically stable . But even if stability may be the end goal of all improvement work, induced instability as a result of ongoing improvement is the short term goal.
+
+SUB-TOPIC35
+----------
+
+The important thing to consider before choosing the right chart is the purpose of the chart. In our experience, run charts are especially useful for determining if improvement is happening when improvement work is ongoing and baseline data are not available. In these situations, the use of control charts may, as mentioned, be inappropriate. In the last section we suggest some guidelines for the use of run charts for improvement work, and a practical example is shown in .
+
+SUB-TOPIC36
+----------
+
+Control charts, on the other hand, are especially useful for continuous optimization (reducing variation) and control of processes which already have been brought to acceptable levels of performance. Some types of control charts like CUSUM and EWMA charts are very sensitive to small shifts in process mean over time. These charts are useful for continuous monitoring of critical outcome measures that have been optimized and stabilised in advance in order to detect process degradation as quickly as possible. Mohammed provides several useful examples on the construction and use of control charts in healthcare .
+
+SUB-TOPIC37
+----------
+
+For basic Shewhart control charts, we suggest combining the sigma test with the runs and crossings tests using the mean as reference rather than using a fixed limit for longest run, which would be the traditional approach.
+
+SUB-TOPIC38
+----------
+
+When using a fixed median, as in our simulation programme, and in the example in , we assume that the median is established from baseline data before any improvement initiative is undertaken. This is, of course, the optimal situation. Baseline data may provide important information on trends and patterns, e.g. autocorrelation, already present in the process, which may be useful in guiding the improvement work .
+
+SUB-TOPIC39
+----------
+
+However, getting baseline data beforehand is not always possible in reality. Often improvement programmes are initiated without available baseline data, and waiting for baseline data may even be unethical. In those situations, measurements start together with the improvement initiative. This is not necessarily a problem, as any significant effect will show itself as non-random variation relatively quickly, as demonstrated in the simulation study. Perla provides useful guidance on sampling considerations in ongoing improvement work .
+
+SUB-TOPIC40
+----------
+
+In conclusion: This study shows that the use of the shift and crossings rules on run charts is effective for detection of non-random variation due to shifts and drifts in process mean while keeping the false signal rate at an acceptable level. We recommend that the use of the trend rule should be discontinued.
+
+illustrates the use of this guideline on data from a hospital that reduced the post-operative mortality after implementing the WHO Safe Surgery Checklist.
+

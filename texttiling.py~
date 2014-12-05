@@ -434,7 +434,7 @@ def main(argv):
             write_results(out, original_section_breaks, pred_breaks2, num_pgraphs, k)
             write_results(out, original_section_breaks, pred_breaks3, num_pgraphs, k)
 
-    out.close()
+        out.close()
 if __name__ == "__main__":
   main(sys.argv)
 
