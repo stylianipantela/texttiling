@@ -395,7 +395,7 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 25
+        w = 20
         k = 10
         num_breaks = int(f.readline())
         original_section_breaks = []
@@ -421,8 +421,17 @@ def main(argv):
 
         ttt = TextTilingTokenizer()
         tiles = ttt.tokenize(text)
+        nltk_section_breaks = []
+        paragraph_count = 0
+        for tile in tiles:
+            tile = tile.strip()           
+            paragraph_count += tile.count("\n\n") + 1
+            nltk_section_breaks.append(paragraph_count)
         print len(tiles)
+        print nltk_section_breaks
 
+        precision_recall(original_section_breaks, nltk_section_breaks)
+        window_diff(original_section_breaks, nltk_section_breaks, k, len(paragraph_breaks))
 if __name__ == "__main__":
   main(sys.argv)
 
