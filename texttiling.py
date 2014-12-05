@@ -110,15 +110,16 @@ def block_score(k, token_seq_ls, unique_tokens):
     """
     score_ls = []
     # calculate score for each gap with at least k token sequences on each side
-    for gap_index in range(k, len(token_seq_ls) - k - 1):
-        before_block = token_seq_ls[gap_index - k : gap_index]
-        after_block = token_seq_ls[gap_index : gap_index + k]
+    for gap_index in range(1, len(token_seq_ls)):
+        current_k = min(gap_index, k, len(token_seq_ls) - gap_index - 1)
+        before_block = token_seq_ls[gap_index - current_k : gap_index]
+        after_block = token_seq_ls[gap_index : gap_index + current_k]
         
         before_cnt = Counter()
         after_cnt = Counter()
-        for j in xrange(k+1):
-            before_cnt += Counter(token_seq_ls[gap_index + j - k])
-            after_cnt += Counter(token_seq_ls[gap_index + j + 1])
+        for j in xrange(current_k+1):
+            before_cnt += Counter(token_seq_ls[gap_index + j - current_k])
+            after_cnt += Counter(token_seq_ls[gap_index + j])
         
         # calculate and store score
         numerator = 0.0
@@ -315,6 +316,10 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     print len(pLocs)
     assert len(paragraphs) == len(pLocs) + 1
     splitIndices = [pLocs.index(b) for b in boundaries]
+
+    # get precision and recall
+    precision_recall([], splitIndices)
+
     startIndex = 0
 
     # append section between subtopic boundaries as new TextTile
@@ -330,6 +335,22 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
         f.write('----------\n\n')
         for paragraph in textTile:
             f.write(paragraph + '\n\n')
+
+def precision_recall(original_breaks, new_breaks):
+    # assumes input has the topic changes
+    original_breaks = [0,3,4,5,6,7,8,9,12,15,16]
+
+    new_breaks_set = set(new_breaks)
+    original_breaks_set = set(original_breaks)
+
+    precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
+
+    recall = len(new_breaks_set.intersection(original_breaks_set)) / len(original_breaks)
+
+    print "Precision is " + str(precision)
+    print "Recall is " + str(recall)
+
+
 
 
 def main(argv):
@@ -351,18 +372,16 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 20
+        w = 16
         k = 10
         text = f.read()
         token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
         scores1 = block_score(k, token_sequences, unique_tokens)
         scores2 = vocabulary_introduction(token_sequences, w)
         boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
-        print boundaries1
         boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
-        print boundaries2
         writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
-
+        writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
 
 if __name__ == "__main__":
   main(sys.argv)
