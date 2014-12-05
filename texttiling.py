@@ -361,7 +361,7 @@ def main(argv):
         print boundaries1
         boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
         print boundaries2
-        writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
+        writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
 
 
 if __name__ == "__main__":

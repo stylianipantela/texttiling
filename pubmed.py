@@ -11,44 +11,58 @@ at most 100 pubmed ids that correpsond to a certain term. The next step is to ac
 soup to parse the html of the articles.
 """
 
-from Bio import Entrez
 from bs4 import BeautifulSoup
 from urllib import urlopen
+import sys
+import string
 
-def fetch_ids(term):
-  '''
-  Fetches a list of pubmed ids related to term from pubmed
+def get_text(url, outfile): 
+    section_breaks = []    
+    num_paragraphs = 0
+    output_text = ""
+    html_doc = urlopen(url).read()
+    soup = BeautifulSoup(html_doc)
 
-  Args :
-    term: to search for
-  
-  Returns:
-    List of pubmed ids of articles related to term
-  
-  Raises :
-      None
-  '''
-  handle = Entrez.esearch(db="pubmed", term=term, retmax=100)
-  record = Entrez.read(handle)
-  idlist = record["IdList"]
-  return idlist
+    for section in soup.find_all("div", {"class":"section"}):
+        # non-standard section, skip it        
+        if section.find("p").get('class') is not None:
+            continue
+        
+        # record the start of a new section
+        if(num_paragraphs > 0):
+            section_breaks.append(num_paragraphs)
 
-def get_text(pubmedid):
-  url = "http://dx.plos.org/10.1371/journal.pone.0113812"
-  html_doc = urlopen(url).read()
-  soup = BeautifulSoup(html_doc)
-  soup = BeautifulSoup(html_doc)
-  print(soup.get_text())
+        # remove figures
+        for figure in section.find_all("div", {"class":"figure"}):
+            figure.extract()
 
+        # process and write paragraphs
+        for paragraph in section.find_all("p"):                
+            for link in paragraph.find_all("a"):
+                link.extract()
+            ptext = filter(lambda x: x in string.printable, paragraph.get_text())
+            output_text += ptext + "\n\n"
+            num_paragraphs += 1
 
-def main():
-  ids = fetch_ids('nucleus')
-  get_text(ids[0])
+    # create the metadata about breaks    
+    metadata = str(len(section_breaks)) + "\n"
+    for brk in section_breaks:  
+        metadata += str(brk) + "\n"
 
+    # write to the output file    
+    f = open(outfile, 'w')
+    f.write(metadata)
+    f.write(output_text)
+    f.close()
+
+def main(argv):
+    # use plos one!
+    link = "http://dx.plos.org/10.1371/journal.pone.0113812"
+    get_text(link, argv[1])
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
 
 
 
