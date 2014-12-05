@@ -156,7 +156,7 @@ def vocabulary_introduction(token_sequences, w):
   w2 = w * 2
 
   # score[i] corresponds to gap position i, score[0] = 1 for the first position
-  scores = [1]
+  scores = [len(new_words2)/w2]
   for i in xrange(1,len(token_sequences)-1):
     # new words to the left of the gap
     new_wordsb1 = set(token_sequences[i-1]).difference(new_words1)
@@ -175,6 +175,10 @@ def vocabulary_introduction(token_sequences, w):
   # special case on last element
   b1 = len(set(token_sequences[len(token_sequences)-1]).difference(new_words1))
   scores.append(b1/w2)
+
+  print "sizes"
+  print len(scores)
+  print len(token_sequences)
 
   return scores
 
