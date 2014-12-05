@@ -290,6 +290,24 @@ def getBoundaries(lexScores, pLocs, w):
 
     return sorted(list(parBoundaries))
 
+def random_breaks(prob, possible_breaks):
+    """
+    Return a list of subtopic boundaries, chosen randomly.
+    Args:
+        prob: Probability of choosing a given paragraph break to be a subtopic
+        boundary.
+        possible_breaks: Number of paragraph breaks.
+    Returns:
+        list of gap indices at which there is a predicted subtopic boundary.
+    Raises:
+        None.
+    """
+    breaks= []
+    for i in range(1, possible_breaks + 1):
+        if random.random() < prob:
+            breaks.append(i)
+    return breaks
+
 def writeTextTiles(boundaries, pLocs, inputText, outfile):
     """
     Get TextTiles in the input text based on paragraph locations and boundaries.
