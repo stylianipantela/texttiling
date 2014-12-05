@@ -1,7 +1,11 @@
-4
+8
 6
 11
+14
+15
+17
 19
+24
 29
 The 2013 WHO HIV treatment guidelines strongly recommend routine viral load (VL) testing six and twelve months after treatment initiation and then at least every year thereafter (strong recommendation, low-quality evidence) . VL testing enables clinicians to monitor the efficacy of antiretroviral therapy and to identify patients struggling with treatment adherence before they develop resistance. Identifying elevated VLs early and providing enhanced adherence support can lead to over 70% of patients successfully re-suppressing HIV viral replication to undetectable levels .
 
@@ -15,7 +19,7 @@ Plasma transport with ethylenediaminetetraacetic acid (EDTA) tubes or plasma pre
 
 The limited sample transport time and temperature thresholds effectively limit the radius of whole blood transport to 6 hours at 25C or to 24 hours at 4C. The implications of such cautious labelling would not significantly affect care in developed countries, since maintaining the cold chain is less difficult, and there is widespread access to centrifuges and efficient specimen transport services. However, in resource-poor environments, such restrictive guidance on whole blood and plasma transport greatly limits access to VL testing to only those in close proximity to national or regional laboratories. This systematic review seeks to measure HIV RNA stability in EDTA tubes and PPT at extended time and temperature thresholds, compared to the established thresholds, in all published studies.
 
-Using a pre-defined protocol, five databases (Pubmed, EMBASE, Ovid, LILACS, and Web of Science) were searched according to pre-specified search terms (). No restrictions on language, publication status, or year of publication were used. Titles were accessed from database inception to August 13th, 2013 or October 28th, 2013, depending on database.
+Using a pre-defined protocol, five databases (Pubmed, EMBASE, Ovid, LILACS, and Web of Science) were searched according to pre-specified search terms (). No restrictions on language, publication status, or year of publication were used. Titles were accessed from database inception to August 13, 2013 or October 28, 2013, depending on database.
 
 After an initial title search, selected abstracts were reviewed in duplicate using piloted forms. Any disagreements were resolved with a third reviewer. The same procedure was followed for inclusion of full text articles and data extraction. Articles were included if they measured HIV RNA stability beyond the established time and temperature thresholds for whole blood or plasma with either EDTA tubes or PPT. Extracted information included characteristics of the study, population, intervention, outcome and risk of bias. Recommended time and temperature thresholds include: <6 hours at room temperature (defined as 25C) for whole blood in EDTA tubes or PPT and <24 hours in whole blood in EDTA at 4C. Plasma can be stored for 24 hours at room temperature (defined as 25C) in EDTA tubes or 5 days at 4C for EDTA tubes or PPT.
 
