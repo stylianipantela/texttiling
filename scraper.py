@@ -11,6 +11,7 @@ import string
 
 def get_text(url, outfile): 
     section_breaks = []    
+    section_titles = []
     num_paragraphs = 0
     output_text = ""
     html_doc = urlopen(url).read()
@@ -24,18 +25,32 @@ def get_text(url, outfile):
         # record the start of a new section
         if(num_paragraphs > 0):
             section_breaks.append(num_paragraphs)
+            section_titles.append(section.find("h3").get_text())
 
-        # remove figures
+        # remove figures, links, other stuff
         for figure in section.find_all("div", {"class":"figure"}):
             figure.extract()
+        for link in section.find_all("a"):
+            link.extract()
 
-        # process and write paragraphs
-        for paragraph in section.find_all("p"):                
-            for link in paragraph.find_all("a"):
-                link.extract()
-            ptext = filter(lambda x: x in string.printable, paragraph.get_text())
-            output_text += ptext + "\n\n"
-            num_paragraphs += 1
+        children = section.findChildren()
+        for child in children:
+            if child.name != "p" and child.name != "h4":
+                child.extract()
+        
+        children = section.findChildren()
+        for child in children:
+            if child.name == "p":
+                for link in child.find_all("a"):
+                    link.extract()
+                ptext = filter(lambda x: x in string.printable, child.get_text())
+                output_text += ptext + "\n\n"
+                num_paragraphs += 1        
+            elif child.name == "h4":
+                if num_paragraphs != section_breaks[-1]:          
+                    section_breaks.append(num_paragraphs)
+                    section_titles.append(child.get_text())
+                    
 
     # the page was bad, didn't get the article
     if len(section_breaks) == 0:
@@ -43,8 +58,9 @@ def get_text(url, outfile):
 
     # create the metadata about breaks    
     metadata = str(len(section_breaks)) + "\n"
-    for brk in section_breaks:  
-        metadata += str(brk) + "\n"
+    for i in xrange(len(section_breaks)):  
+        metadata += str(section_breaks[i]) + "\n"
+        #metadata += ": " + section_titles[i] + "\n"
 
     # write to the output file    
     f = open(outfile, 'w')
