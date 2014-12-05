@@ -109,7 +109,9 @@ def block_score(k, token_seq_ls, unique_tokens):
     Raises:
         None.
     """
+    
     score_ls = []
+    
     # calculate score for each gap with at least k token sequences on each side
     for gap_index in range(1, len(token_seq_ls)):
         current_k = min(gap_index, k, len(token_seq_ls) - gap_index)
@@ -332,7 +334,20 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     return splitIndices
 
 def precision_recall(original_breaks, new_breaks):
-    # assumes input has the topic changes
+    """
+    Calculate precision and recall values and prints them
+
+    Args:
+        original_breaks: original breaks
+        new_breaks: new breaks predicted by algorithm
+    
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+
     new_breaks_set = set(new_breaks)
     original_breaks_set = set(original_breaks)
 
@@ -409,10 +424,10 @@ def main(argv):
         pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
         
         # get precision and recall
-        print len(pred_breaks1)
+        # print len(pred_breaks1)
         precision_recall(original_section_breaks, pred_breaks1)
         window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
-        print len(pred_breaks2)
+        # print len(pred_breaks2)
         precision_recall(original_section_breaks, pred_breaks2)
         window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
 
@@ -424,8 +439,8 @@ def main(argv):
             tile = tile.strip()           
             paragraph_count += tile.count("\n\n") + 1
             nltk_section_breaks.append(paragraph_count)
-        print len(tiles)
-        print nltk_section_breaks
+        # print len(tiles)
+        # print nltk_section_breaks
 
         precision_recall(original_section_breaks, nltk_section_breaks)
         window_diff(original_section_breaks, nltk_section_breaks, k, len(paragraph_breaks))
