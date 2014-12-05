@@ -313,12 +313,8 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     paragraphs = [s.strip() for s in inputText.splitlines()]
     paragraphs = [s for s in paragraphs if s != ""]
 
-    print len(pLocs)
     assert len(paragraphs) == len(pLocs) + 1
     splitIndices = [pLocs.index(b) for b in boundaries]
-
-    # get precision and recall
-    precision_recall([], splitIndices)
 
     startIndex = 0
 
@@ -335,23 +331,49 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
         f.write('----------\n\n')
         for paragraph in textTile:
             f.write(paragraph + '\n\n')
+    return splitIndices
 
 def precision_recall(original_breaks, new_breaks):
     # assumes input has the topic changes
-    original_breaks = [0,3,4,5,6,7,8,9,12,15,16]
-
     new_breaks_set = set(new_breaks)
     original_breaks_set = set(original_breaks)
 
     precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
-
     recall = len(new_breaks_set.intersection(original_breaks_set)) / len(original_breaks)
-
     print "Precision is " + str(precision)
     print "Recall is " + str(recall)
 
+def window_diff(true_ls, pred_ls, k, N):
+    """
+    Calculate the WindowDiff metric as proposed in
+    http://people.ischool.berkeley.edu/~hearst/papers/pevzner-01.pdf
 
+    Args:
+        true_ls: list of actual boundaries in the text.
+        pred_ls: list of predicted boundaries in the text.
+        k: length of window as defined in the paper.
+        N: total number of possible boundary locations as defined in the paper.
+    Returns:
+        WindowDiff metric (number between 0 and 1).
+    Raises:
+        None.
+    """
+    true_dict = Counter()
+    pred_dict = Counter()
+    for item in true_ls:
+        for index in range(item - k + 1, item + 1):
+            true_dict[index] += 1
+    for item in pred_ls:
+        for index in range(item - k + 1, item + 1):
+            pred_dict[index] += 1
+    total = 0
+    for i in range(0, N - k):
+        if true_dict[i] != pred_dict[i]:
+            total += 1
 
+    metric = float(total)/float(N - k)
+    print "WindowDiff metric is " + str(metric)
+    return metric
 
 def main(argv):
     '''
@@ -372,16 +394,27 @@ def main(argv):
     with open(argv[1], 'r') as f:
         # somewhat arbitrarily chosen constants for pseudo-sentence size
         # and block size, respectively.
-        w = 16
+        w = 28
         k = 10
+        num_breaks = int(f.readline())
+        original_section_breaks = []
+        for i in xrange(num_breaks):
+            original_section_breaks.append(int(f.readline()))
         text = f.read()
+
         token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
         scores1 = block_score(k, token_sequences, unique_tokens)
         scores2 = vocabulary_introduction(token_sequences, w)
         boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
         boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
-        writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
-        writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
+        pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
+        pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
+        
+        # get precision and recall
+        precision_recall(original_section_breaks, pred_breaks1)
+        precision_recall(original_section_breaks, pred_breaks2)
+        window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
+        window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
 
 if __name__ == "__main__":
   main(sys.argv)
