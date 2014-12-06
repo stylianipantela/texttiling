@@ -1,28 +1,217 @@
-w = 20, k = 6
-
-
-
-
-
-
-
-
-
-
-block     : 0.441238892686, 0.781883394383, 0.366074280252,
+<<<<<<< HEAD
+w = 20, k = 10
+block     : 0.540598984349, 0.504778554779, 0.241692242942,
 vocab     : 0.408045214045, 0.919444444444, 0.435522111904,
 nltk block: 0.407222222222, 0.767435342435, 0.435695318327,
-w = 20, k = 8
+random    : 0.400370511841, 0.35796009546, 0.324504296873,
+=======
+1.0,0.384615384615,0.0,
+0.590909090909,1.0,0.0,
+0.611111111111,0.846153846154,0.0,
+0.5,0.125,0.25,
+0.285714285714,0.75,0.571428571429,
+0.25,0.625,0.571428571429,
+0.636363636364,0.583333333333,0.259259259259,
+0.44,0.916666666667,0.481481481481,
+0.333333333333,0.666666666667,0.62962962963,
+0.4375,0.5,0.4375,
+0.424242424242,1.0,0.5625,
+0.444444444444,0.857142857143,0.5,
+0.666666666667,0.769230769231,0.0,
+0.619047619048,1.0,0.0,
+0.666666666667,0.923076923077,0.0,
+0.625,0.625,0.230769230769,
+0.296296296296,1.0,0.653846153846,
+0.291666666667,0.875,0.615384615385,
+0.727272727273,0.727272727273,0.0,
+0.55,1.0,0.0,
+0.625,0.909090909091,0.0,
+0.384615384615,0.833333333333,0.466666666667,
+0.375,1.0,0.533333333333,
+0.375,1.0,0.533333333333,
+0.0,0.0,0.272727272727,
+0.075,0.75,1.0,
+0.0416666666667,0.25,0.954545454545,
+0.428571428571,0.5,0.5,
+0.424242424242,0.777777777778,0.552631578947,
+0.433333333333,0.722222222222,0.552631578947,
+bute to specific patterning or differentiation decisions during vertebrate embryogenesis is less well understood.
 
+SUB-TOPIC1
+----------
 
+Deadenylation is thought to be the initial step in bulk mRNA turnover  and is first mediated by the Pab1p-dependent poly (A) nuclease (PAN2-PAN3) complex trimming the poly (A) tail to a length of 60 to 80 nucleotides , . Subsequently the Ccr4-Not complex removes the remaining poly (A) tail finally exposing the mRNA to decapping and decay mechanisms. The Ccr4-Not complex is conserved from yeast to human . In yeast the Ccr4-Not complex is the main deadenylase and comprises 9 core components . Ccr4 associated factor 1 (Caf1) and Carbon catabolite repression factor 4 (Ccr4) are the only subunits of the Ccr4-Not complex involved in 3 to 5 deadenylase activity , . Caf1 has a second function in associating Ccr4 to the Ccr4-Not complex .  and  are homologs of the yeast  gene in zebrafish, mouse, and human. Instead, in  only one homolog () has been identified , , . In vertebrates the Ccr4-Not complex contains the three proteins Ccr4, Cnot8 and Cnot7, dispatching deadenylase function (reviewed in ). Whereas the biochemical roles of  and  in the mRNA decay pathway are well studied, and functions have been determined in cell culture (for example, ) as well as invertebrate systems, it so far is not well understood whether they may also contribute to differential control of mRNA turnover during development and differentiation in vertebrates. Cnot7 has been shown to be required for normal spermatogenesis in mice , but for Cnot8 mouse phenotypes have not been reported.
 
+SUB-TOPIC2
+----------
 
+Dopaminergic (DA) neurons are intensively studied both because of the medical relevance of DA neurons for many neurological diseases, and because DA neurons are an excellent paradigm for differentiation of neurons of one transmitter phenotype in diverse regions of the brain . Zebrafish have become popular as animal model to study DA differentiation, because of ease of genetic and experimental access and excellent visualization of neuronal types in the transparent embryos and larvae . Most zebrafish DA groups topologically correspond to those typically found in other vertebrates. Like in mammals, DA neurons develop in the olfactory bulb (OB; mammalian A16) and in the retina (mammalian A17) of zebrafish. The prethalamic group (numbered DC1 in larvae) is homologous to mammalian neurons of the prethalamic zona incerta (A13). All DA clusters located in the posterior tuberculum in zebrafish (groups DC 2, 4, 5, and 6) require the activity of the transcription factor Orthopedia (Otp) and are homologous to the OTP-depending A11 DA in the mammalian brain . The DA groups of the preoptic region and the hypothalamus (groups DC 3 and 7) in zebrafish correlate with mammalian A12 and A14 DA groups. Zebrafish however lack ventral midbrain DA neurons homologous to the mammalian A8-10 group. Instead, an additional group of DA neurons exists in the zebrafish striatum , , . Most studies in zebrafish have focused on transcriptional control of DA groups , especially of the A11-type DA neurons , and on signaling mechanisms ,. Studies on signaling mechanisms have provided insight into mechanisms controlling the number of DA neurons for the A11-type DA group , , . In contrast, very little is known about mechanisms that control DA neuron number in other anatomical groups, including the hypothalamic ones.
 
+SUB-TOPIC3
+----------
 
+In a zebrafish genetic screen for mutations affecting expression pattern and level of  mRNA as marker for DA and noradrenergic (NA) neurons, we identified a mutation in the  gene. The mutant phenotype is attenuated during early developmental stages by maternally derived functional Cnot8 protein, which gradually decays as development proceeds.  mutant embryos display increased  transcript levels and increased numbers of DA neurons particularly in the caudal hypothalamus. The hypothalamic DA phenotype may be caused by direct effects on  mRNA stability, or by changes in levels of developmental regulators controlling formation of caudal hypothalamic dopaminergic neurons. We find that  as well as FGF receptor genes are expressed at higher levels in the caudal hypothalamus in  mutant embryos. Our data suggest that Cnot8, as Caf1 in yeast  and POP2 in  , may have a function in mRNA turnover in zebrafish. Rendering the Cnot8 protein non-functional may result in decreased mRNA decay rates for many but not all developmental regulators, and thus accumulation of those mRNAs. The detailed analysis of genes affected by Cnot8 deficiency in the caudal hypothalamus led us to identify FGF signaling, and specifically Fgf3, as pathway contributing to the specification of the proper number of DA neurons in the caudal hypothalamus.
 
+SUB-TOPIC4
+----------
 
+During a systematic genetic screen for mutations affecting development of catecholaminergic (CA) neurons in zebrafish, we identified the  mutation, which was unique in that it was the only mutation isolated which appeared to cause enhanced differentiation of selected CA neuronal groups. In the screen, which was based on detecting  mRNA expression as marker for CA neurons, the  mutation gave rise to a stronger and expanded whole mount in situ hybridization (WISH) signal for  expression, likely reflecting higher  mRNA levels and potentially also an elevated number of DA and NA neurons. At 1 and 2 days post fertilization (dpf), ()  mutants display a  expression pattern indistinguishable from wild-type siblings. At 3 dpf, a stronger  hybridization signal for  expression was observed in the diencephalic DA cell clusters of  mutants. This phenotype was especially pronounced in the caudal hypothalamic diencephalic dopaminergic cluster 7 (DC7; , arrowhead in I, J). Most other DA groups in the forebrain developed normally up to 4 dpf, with the exception of the pretectal cluster, which showed a minor increase in stain intensity (), and the retinal amacrine DA neurons, which appear to be severely reduced in  mutant embryos (). We also analyzed NA neuronal clusters, which revealed that the  signal for medulla oblongata (MO) and sympathetic NA neurons appeared to be stronger in  mutant embryos ( and asterisk in J). The NA neurons of the locus coeruleus (LC) did not appear to be affected in  mutants. Whole mount immunofluorescence detection of TH was performed and confocal stacks representing the whole ventral diencephalon and rostral hindbrain were analyzed for cell numbers of diencephalic DA cell clusters and the NA cells of the LC at 4 dpf (). As DC 4, 5 and 6 are difficult to distinguish due to close anatomical location, neurons of these groups were combined for analysis. The cell counts were analyzed for statistical significant differences in mutant embryos using the Mann-Whitney test. In  mutant embryos, a strong increase of DA cell numbers was only found for the caudal hypothalamic DC7 DA group (p = 0.008). DA neurons of DC7 showed a more than 2-fold increase in number in  mutants when compared to wild-type siblings (). Milder increases in cell number were found in DA DC1 (p = 0.032) and 3 (p = 0.008; ). The cell numbers in other DA cell clusters like DC2, 4, 5, 6 and the LC were not significantly different between  embryos and controls.
 
+SUB-TOPIC5
+----------
 
-block     : 0.455906756642, 0.595054945055, 0.302295526111,
-vocab     : 0.408045214045, 0.919444444444, 0.435522111904,
-nltk block: 0.407222222222, 0.767435342435, 0.435695318327,
+Given the pronounced changes in CA differentiation, we determined whether living  mutant larvae also develop morphological abnormalities. On the first and second day of development, the overall live morphology of  mutant embryos appear indistinguishable from wild-type siblings (data not shown). From 3 dpf on,  mutant embryos have smaller heads with smaller brain and eyes, as well as impaired branchial arch development. In 5 dpf old  mutant larvae, the eyes are significantly smaller than in wild-type siblings, and edema formation was observed in several tissues including the eyes, brain, heart sack, yolk sack and the intestine (). In addition,  mutants have defective swim bladder formation and reduced heart beat frequency. Further,  mutant larvae from 4 dpf on have a reduced motility in comparison to wild-type sibling larvae (data not shown). Mutant larvae die soon after 5 dpf and cannot be raised to feeding larvae.
+
+SUB-TOPIC6
+----------
+
+To identify the gene affected by the  mutation, we mapped it using bulked segregant analysis and Simple Sequence Length Polymorphism (SSLP) genetic markers , and identified linkage to chromosome 21. Fine mapping of the  mutation required the generation of additional SSLP markers based on published sequence (Materials and Methods). The  critical genetic interval was defined by the proximal marker CR855270.17 p9 (genetic distance of 0.2 cM) and the distal marker BX927237 p4 (genetic distance of 0.07 cM) (). At the approximate position of 38.7 Mb of the linkage group 21 (assembly Zv8; ), we identified  and other adjacent genes as candidate genes for the  mutation. The sequencing of cDNA from homozygous mutant  larvae identified a base change at bp 82 within the  ORF, which resulted in changing an arginine codon to a stop codon, causing premature termination of the peptide after 27 amino acids. This result was confirmed by amplification and sequencing of the corresponding genomic DNA from  mutant and wild-type sibling larvae (). The zebrafish Cnot8 protein consists of 286 amino acids and has one predicted functional domain which exerts exonuclease activity and comprises amino acids 13 to 240 (). The premature stop codon causes the formation of a truncated Cnot8 peptide which lacks most of its RNAse domain and should lack its poly (A) deadenylation function. Thus, the  allele is expected to represent a complete loss of function or null allele of .
+
+SUB-TOPIC7
+----------
+
+has been reported to be broadly expressed ( ZDB-IMAGE-050809-54; ). To confirm whether  is globally expressed and not in a tissue specific manner, we analyzed its expression throughout embryonic and early larval stages.  mRNA was already detected at 4-cell stage (). Since transcription from the zebrafish zygotic genome starts only at midblastula transition (MBT), shortly after 3 hpf , this reveals maternally transcribed  mRNA deposited into the oocyte. Therefore functional maternal mRNA derived Cnot8 protein is likely to enable proper development at early gastrula stages in  mutant embryos. During later embryonic and early larval stages  was ubiquitously expressed (; insets show sense control WISH).
+
+SUB-TOPIC8
+----------
+
+Based on the maternal and zygotic expression,  mutant embryos are expected to contain about half the amount of wild-type functional maternal protein, but no functional zygotic mRNA derived Cnot8 protein. Therefore, the mutant phenotype represents the gradual loss of functional maternally derived protein during embryonic stages, as most maternal mRNAs appear to be degraded during blastula and gastrulation stages . Stable maternal derived Cnot8 protein may therefore persist well through the first two to three days of development. Therefore, we investigated whether translational block of  mRNA by antisense Morpholino oligonucleotides directed against sequence including the start Cnot8 ATG () would cause a phenotype stronger than . Injection of a low amount of  (1 ng) lead to a more severe morphological phenotype, while 28 ng amounts caused early lethality (). The morphant phenotype was not further investigated because Morpholino-induced broadly lethal phenotypes are difficult to analyze. We also did not attempt to generate maternal and zygotic mutant embryos based on mutant germline clones, because we reasoned that Cnot deficient germline might be cell-lethal. We also investigated whether microinjection of mRNA encoding the wild-type Cnot8 protein into one-cell stage embryos would rescue the  mutant phenotype, but did not achieve a significant rescue (data not shown). We interpret this as injected mRNA similar to maternal mRNA being degraded during early development, and not being able to contribute to a rescue of the phenotype on the third day of development and later.
+
+SUB-TOPIC9
+----------
+
+To identify whether pattern formation and morphogenesis of the brain proceed normally during the first three days of development, we investigated the expression of genes involved in pattern formation and regionalization of the brain in  mutant embryos. To determine whether changes in WISH signal may be significant, we measured mean intensities of WISH signal within defined anatomical domains of marker gene expression in five or more images of control and experimental (mutant) embryos, and analyzed data for significant differences in mean intensities using the Mann-Whitney test (see ; all measurements and statistical analyses are documented in ). We used  for telencephalic development ,  as a marker for rhombomeres 3 and 5  and  as a marker for prominent signaling centers like the mid-hindbrain boundary, anterior neural ridge and optic stalk . In 1 and 2 dpf old  mutant and wild-type sibling embryos the expression pattern of these genes was indistinguishable (). In contrast, at 3 dpf a slightly stronger WISH stain was observed for  and  in  mutant embryos compared to wild-type, while  expression appeared not affected. Measurements revealed that the WISH signal was significantly stronger in the telencephalic  domain at 3 dpf (p = 0.032), and at 2 dpf (p = 0.017) and 3 dpf (p = 0.009) for the hindbrain  domain.
+
+SUB-TOPIC10
+----------
+
+Given that the most severe dopaminergic phenotype was observed in the caudal hypothalamus, we analyzed expression of transcription factors involved in dopaminergic differentiation and in hypothalamic development.  and  have been shown to encode transcription factors required for the specification and differentiation of a subset of DA neurons in the ventral diencephalon in zebrafish , . At 2 dpf,  is expressed in several ventral diencephalic domains within the dorsal posterior tuberculum, hypothalamus, and ventral pituitary . In  mutant embryos  is expressed in the same spatial pattern but at stronger WISH signal intensity as compared to wild-type siblings (; preoptic domain not significantly different, but hindbrain WISH signal significantly stronger, p = 0.008). At 3 dpf expression levels of  decline and the corresponding domains in the posterior tuberculum and hypothalamus are very faint in wild-type siblings, while  WISH signal in these domains is detected at higher levels in  mutants (; preoptic area p = 0004). The  expression domain in the hindbrain also has a stronger WISH stain in  mutants embryos compared to wild-type siblings (hindbrain p = 0.002). Expression analysis of  at 2 dpf also revealed a slightly stronger staining in  mutant embryos in comparison to wild-type siblings, while the expression pattern was normal (; posterior tuberculum p = 0.004). We further analyzed  expression as a marker for the hypothalamus . The analysis revealed that at 3 dpf the hypothalamus in  mutant embryos and wild-type siblings are of equal size (). However, we observed a slightly stronger  WISH signal in  mutant embryos as compared to wild-type siblings (hypothalamus p = 0.008). In summary, it appears that patterning and regionalization of the brain occur normally in  mutant embryos, while, as judged from WISH stain intensities, the transcript levels of some genes, including the transcription factors , and , appear to be increased.
+
+SUB-TOPIC11
+----------
+
+We analyzed whether also other neuronal cell types in addition to DA cells were affected in  mutants. We focused on neurons in the hypothalamus with regulatory links to dopaminergic specification. The transcription factors Sim1 and Otp have been shown to be required for the development of dopamine, CRH, and Oxytocin secreting neurons in mammals ,  and zebrafish , , , . In addition we analyzed serotonergic neurons for comparison.
+
+Oxtl/Isotocin is the homolog of oxytocin In zebrafish .  neurons have been shown to form in two distinct areas in the preoptic region of the hypothalamus . The comparison of  mutant embryos and wild-type siblings and mutants revealed that the  expression pattern is not altered at 3 dpf in mutant embryos, but the WISH signal was slightly darker (; p = 0.016).
+
+SUB-TOPIC12
+----------
+
+expression in early zebrafish brain development has been analyzed in detail in comparison to  and  gene expression . At 3 dpf  is expressed in the telencephalon, posterior tuberculum, hypothalamus, thalamus, epiphysis, midbrain tegmentum, rostral hindbrain and retina. We performed in situ hybridization to analyze the development of  expressing neurons in  mutants at 3 dpf. The analysis revealed that  WISH stain intensity was increased in  mutant embryos in all cell clusters (; p = 0.004). To address whether the stronger signal may be caused by an increase in mRNA levels or the formation of additional CRH neurons, we counted  expressing cells in proximity to DA neurons in the posterior tuberculum and hypothalamus (boxes in ). In this region, we identified approximately twice the number of  neurons in  mutant embryos in comparison to wild-type siblings ( legend; ; p = 0.008).
+
+SUB-TOPIC13
+----------
+
+Serotonergic neurons are characterized by Tryptophan hydroxylase expression, the rate-limiting enzyme in neurotransmitter synthesis. In zebrafish two genes encoding Tryptophan hydroxylase,  and , have been identified and their expression analyzed , .  is a marker for serotonergic neurons in the raphe nucleus and epiphysis. The analysis of  and  expression in  mutant embryos did not reveal any significant differences in expression compared to wild-type siblings. ( and data not shown).
+
+In summary, we conclude that different neuronal cell types are differentially affected in  mutant embryos: While serotonergic () neurons form normally, CRH and dopaminergic neurons in selected anatomical areas are enhanced in number, and  WISH signal appears enhanced in oxytocinergic neurons.
+
+SUB-TOPIC14
+----------
+
+The DA phenotype in the caudal hypothalamus was qualitatively different from other CA groups in that not just the  expression level was increased, but also the number of caudal hypothalamic neurons appeared increased. Therefore signaling pathways controlling DA differentiation in this anatomical region may be affected. FGF signaling namely through Fgf3 has been demonstrated to be important in caudal hypothalamus development . Expression analysis of  by WISH and quantification of signal intensity revealed that  mutants have a mild increase of  WISH intensity already at 2 dpf (), both in the mid-hindbrain boundary expression domain (p = 0.008) and in the caudal hypothalamus (p = 0.008).  WISH signal continues to be enhanced in both domains at 3 dpf (; MHB p = 0.008. cHyp p = 0.004). We also analyzed expression of FGF receptor encoding genes ,  and  in  embryos. While at 1 dpf WISH signal intensities of , 2,  and  are not significantly altered in  mutants (), at 2 dpf  and  showed increased WISH stain intensities in mutants (;  ventral hindbrain domain p = 0.008;  dorsal forebrain and midbrain p = 0.008), while  and  WISH signal levels were not altered in comparison to WT siblings. WISH signals of , , , and  were up-regulated in  mutants at 3 dpf (;  lower jaw p = 0.031;  dorsal forebrain/midbrain p = 0.016;  hindbrain p = 0.016;  dorsal midbrain p = 0.008).
+
+SUB-TOPIC15
+----------
+
+The increase in  as well as FGF receptor mRNA WISH signal in  mutants suggests that FGF signaling levels may also be increased. To address this issue we analyzed expression of the FGF downstream target genes  and  by WISH in  embryos. Expression of ETS related protein () was analyzed at 3 dpf (), and of polyoma enhancer activator 3 () at 1, 2 and 3 dpf ( and data not shown). The experiments revealed that WISH signals for mRNA levels of  and  were stronger in  mutants at 2 and 3 dpf ( MHB, telencephalon, hypothalamus each p = 0.028;  cHyp p = 0.008, lens p = 0.029).  WISH signal was not increased at 1 dpf (data not shown). Increased expression of downstream targets of the FGF signaling pathway suggest increased FGF signaling levels in  mutants, although due to the nature of the  mutation in a gene affecting transcript stability, we cannot exclude that the increased  and  signals may be caused by increased transcript stability.
+
+SUB-TOPIC16
+----------
+
+To determine whether enhanced FGF signaling pathway activity may contribute to formation of supernumerary DC7 DA neurons, we treated  embryos with SU5402, an inhibitor of FGF signaling . SU5402 was applied to embryos for 6 hours from 42 to 48 hpf, the developmental period during which a significant amount of DC7 DA neurons becomes postmitotic . SU5402 treatment did not result in any significant changes in cell numbers of DC1-6 (compare ).  mutants had an average of 103.2 DC7 DA neurons, which is a 2-fold increase in DC7 cells in comparison to WT siblings (compare ' and B'; p = 0.008). SU5402 treated  mutant embryos developed an average of 56.2 DC7 neurons, while SU5402 treated WT siblings contained an average of 20.6 DC7 neurons (compare ' and F'; p = 0.008). Thus  mutants treated with SU5402 had only half the amount of DC7 neurons in comparison to non-treated  mutants (p = 0.008). However,  mutants treated with SU5402 still showed a 2.6 fold increase in cell number in comparison to SU5402 treated WT siblings (compare ' and F'; p = 0.008). The significant reduction of DA neurons in both  and WT embryos by SU5402 treatment by about 50% indicates that FGF signaling may be involved in formation of DC7 DA neurons. The increase in DA neuron number in  may in part be mediated by enhanced FGF signaling.
+
+SUB-TOPIC17
+----------
+
+To specifically investigate if Fgf3 signaling is involved in the formation of the DC7 DA  mutant phenotype we used the  mutation, which eliminates Fgf3 activity , and generated  double mutants. Embryos were analyzed at 4 dpf by anti-TH immunofluorescene and confocal stacks were recorded. Using the confocal data, DA neurons were counted in embryos of WT, single mutant, and double mutant backgrounds (). In  mutant embryos DA neurons of DC1-6 develop normally () indicating that the development of these neurons does not depend on Fgf3 signaling. DC7 neurons are about 20% reduced in number in  mutants in comparison to WT siblings (p = 0.024). Most interestingly  double mutants have on average of 52.6 DC7 DA neurons, and thus a significant reduction can be observed in comparison to  double mutants having an average of 103.4 DC7 DA neurons (p = 0.008). Loss of Fgf3 signaling in a  mutant background results in a reduction of DC7 DA neurons almost restoring DA cell numbers counted in WT genetic background (; cell numbers not significantly different; p = 0.45). These findings indicate that Fgf3 signaling, although not strictly required for differentiation of the caudal hypothalamic DA group DC7, has an important role in determining the number of these dopaminergic neurons.
+
+SUB-TOPIC18
+----------
+
+In a forward mutagenesis screen we have identified a mutant which eliminates the activity of the zebrafish  gene. We show that  is expressed maternally and uniformly zygotically. The  zygotic mutant phenotype becomes progressively more severe as maternal Cnot8 activity declines.  expression analysis reveals that the mRNAs for a subset of neuronal differentiation markers, developmental transcription factors, and signals can be detected with elevated signal intensities in  mutant embryos.  as marker for dopaminergic neurons is enhanced in several DA neuronal groups, and the number of caudal hypothalamic DA neurons is significantly increased in  mutants. Analysis of the FGF signaling pathway in  mutants reveals that stabilization of  mRNA and FGF receptors may control DA neuron number in the caudal hypothalamus. Using Fgf3 loss-of-function experiments, we confirm that Fgf3 contributes to control of caudal hypothalamic DA neuron number.
+
+SUB-TOPIC19
+----------
+
+Cnot8 is a component of the Ccr4-Not complex which is conserved from yeast to human and considered to be a platform to regulate gene expression at different levels, including bulk mRNA degradation, protein ubiquitination, and transcription , . While biochemical and cellular functions of the complex have been extensively characterized in cell lines and invertebrate model organisms, little is known whether Ccr4-Not or its subunits may contribute to tissue specific mRNA turnover or regulatory mechanisms in vertebrates. In mice, Cnot8 has been shown to contribute to proper spermatogenesis , revealing a potential for selective Cnot8 activity in development and differentiation. In this work we characterized the zebrafish  mutant allele which contains a premature stop codon in the ORF after amino acid 27, likely resulting in a null allele. The Cnot8 protein contains only one functional domain which is required for exonuclease activity and a truncation of the protein likely impedes deadenylation of bulk mRNA resulting in accumulation of transcripts. Proper Ccr4-Not complex function is substantial and necessary as only completely deadenylated transcripts are degraded and no longer translated. Our data suggest that Cnot8, similar to Caf1 in  and POP2 in , has a function in mRNA turnover in zebrafish.
+
+SUB-TOPIC20
+----------
+
+Analysis of  expression revealed that maternal  mRNA is deposited in the embryo and  is expressed zygotically at early zebrafish embryonic and larval stages in a ubiquitous fashion. Thus, Cnot8 may function in all cells of the embryo. cnot8 and other components of the Ccr4-Not complex were also reported to be expressed ubiquitously during all developmental stages at least until 3 dpf in zebrafish ( data base search).
+
+SUB-TOPIC21
+----------
+
+The analysis of expression of several embryonic patterning genes as well as neural differentiation markers by  hybridization analysis revealed increased transcript levels in  mutant embryos for some but not all analyzed genes in embryos beginning from the second day of development. The lack of an early phenotype of  mutant embryos is likely caused by maternal rescue during the first day of development. At 3 dpf, in  mutants elevated WISH stain intensities and thus likely mRNA levels were detected for , , , , , , ,  and FGF receptor genes, while gene expression levels of  and  were indistinguishable from WT siblings. These observations raised the question why only a subset of mRNA species accumulated in  mutants. Gene expression levels initially are defined by the rate of transcription. First, the amount of generated mRNA depends on the gene and developmental stage. Second, the half-life of each mRNA species is different as e.g. the removal of longer poly (A) requires more time . Third, mRNA decay involves the function of deadenylating and decapping protein complexes (reviewed in ). The recruitment processes of mRNAs targeted for decay to these complexes remain poorly understood . Different mRNA species may display different affinities toward protein complexes involved in mRNA decay. In vertebrates Cnot7 and Cnot8 are paralogs of yeast Caf1 , , . In yeast, Ccr4 is associated to the Ccr4-Not complex via Caf1 , , . Cnot7 may compensate loss of Cnot8 function. Addressing the functions of both Caf1 paralogs, Aslam et al.  performed siRNA mediated knockdown of Cnot8 and Cnot7 in MCF7 breast cancer cells. Subsequent microarray analysis revealed that single knock down of either component resulted in alteration in expression of few genes only, while combined knockdown caused altered expression in more than two hundred genes. Together, this argues that Cnot7 and Cnot8 may function redundantly in MCF7 cells. This notion is further supported by the finding that  knockout mice are viable with a spermatogenesis defect . Expression analysis in mouse neural tissues also revealed differential expression of CNOT7 and CNOT8 in different tissues and downregulation of CNOT8 during differentiation . Our finding of multiple changes in gene expression levels in  mutants combined with lethality of the mutation indicate that both paralogs, Cnot8 and Cnot7, are not entirely redundant in function during development.
+
+SUB-TOPIC22
+----------
+
+We further investigated potential differential functins of Cnot8 in development using DA neural differentiation as model system. Early differentiating DA neurons of the DC2, 4, and 5 groups, and noradrenergic neurons of the locus coeruleus form during the first 36 hours of development, and appear normal in  mutant embryos. During these time periods sufficient functional Cnot8 may be present in  mutants as a result of maternally deposited  mRNA. In contrast, cell counts of DA cells in the ventral diencephalon and hypothalamus showed that DA cell number was significantly increased in the caudal hypothalamic DC7 group in  mutants compared to WT siblings. An increase in the number of scored cells was also observed for CRH neurons, but not for serotonergic neurons located adjacent to DC7 DA neurons. Therefore, the effect of Cnot8 depletion is not selective for DA neurons, but also does not globally affect all neuronal types in this region and at this stage. The increase in number of counted cells may be caused by a true increase in number of DC7 DA neurons in mutant embryos, but may alternatively also be explained by increased  mRNA levels due to less decay, which may facilitate detection of newly specified DC7 DA neurons which in wildtype controls express too little  to be detected by the technique. However, based on the fact that selective interference with Fgf3 signaling can compensate the formation of supernumerary DC7 DA neurons, we think that indeed additional DA neurons are observed in  mutant embryos.
+
+SUB-TOPIC23
+----------
+
+Our findings reveal elevated  mRNA levels in  mutant embryos, along with elevated levels of expression for the FGF responsive transcription factor genes  and . Given the expression domain of  in the posterior wall of the caudal hypothalamus, we hypothesized that enhanced Fgf3 signaling may be the cause for formation of supernumerary DC7 DA neurons. To test this hypothesis, we blocked FGF signaling using the FGF receptor inhibitor SU5402. While DC7 DA neurons become postmitotic during an extended developmental period , we restricted our analysis to a shorter time window, because permanent global inhibition of FGF signaling affect pattern formation and embryonic survival. However, even when we restricted SU5402 application to 42 to 48 hpf only, we could reduce the wildtype and  mutant DC7 DA population by about half each. More specifically, when we eliminated Fgf3 activity in  mutant embryos, we observed almost complete compensation of the supernumerary DC7 DA neurons in  mutant embryos. These data reveal that Fgf3 signaling contributes to specification of the number of DA neurons in the caudal hypothalamus. However, Fgf3 may not provide the only FGF activity, because residual DC7 DA neurons form in / homozygous mutant embryos. Other FGFs, including Fgf8a , may act redundantly with Fgf3. Fgf8 from the mid-hindbrain boundary has previously been linked to midbrain DA differentiation . An alternative explanation would be that Fgf3 is not directly involved in controlling DC7 DA differentiation, but may rather control the size of the DC7 precursor pool size or proliferation of the precursor pool. A link for Fgf3 signaling to cell cycle control and differentiation in the hypothalamus has also been established for serotonergic neuron differentiation in zebrafish . A regulation of DA neuron number by control of precursor pool size has also been shown for the more rostral posterior tubercular DA neurons in zebrafish, involving WNT signaling .
+
+SUB-TOPIC24
+----------
+
+In summary, our data indicate that zebrafish Cnot8 contributes to regulation of proper transcript levels for a subset of developmental control and differentiation genes during embryogenesis, confirming conserved functions of Caf1, Pop2, and Cnot7/8 from yeast to vertebrates. The enhanced activity of Fgf3 signaling in the  mutant helped us to uncover a role for Fgf3 in controlling the number of DA neurons developing in the zebrafish caudal hypothalamus. The  mutantion may be a useful model to further study the contribution and mechanisms of the Ccr4-Not complex towards control of transcript levels during development.
+
+SUB-TOPIC25
+----------
+
+This study was performed with the approval of the State of Baden-Wrttemberg Regierungspraesidium Freiburg Animal Protection Authorities in accordance with the German Animal Protection Act under permission number 35-9185.81/G-12/40.
+
+Zebrafish were crossed and eggs maintained under standard conditions at 28,5C . Embryos were treated with 200 mM phenylthiourea to inhibit melanin pigmentation.
+
+SUB-TOPIC26
+----------
+
+The  allele (Tbingen isolation number ) was isolated in an ENU mutagenesis screen in a Tbingen wildtype strain genetic background . Map crosses were set up between a heterozygous carrier of the  mutation and wild-type fish of the AB or HK strain.
+
+SUB-TOPIC27
+----------
+
+The  mutant line was previously described . Embryos were genotyped by PCR using the following primers: forward 5  3 and reverse 5  3. PCR conditions: 94C 2 min; 94C 1 min; 56C 1 min; 72C 1 min; 35 cycles. The PCR product had a length of 200 bp. The  mutation generates an EcoRV site: PCR product digestion from yielded a 180 bp fragment indicative of the mutant allele.
+
+SUB-TOPIC28
+----------
+
+We established a high resolution genetic mapping pannel consisting of 672 F2 embryos representing 1344 meioses from crosses of the original isolate  into AB and HK strain polymorphic strains, providing approximately 0.07 cM resolution. Whole genome scan analysis using SSLP markers  linked the  mutation to chromosome 21. To yield additional polymorphic markers for fine mapping, genomic sequences in the critical region were obtained from Ensembl (Zv6, 7 and 8) genome browser and primer pairs for candidate SSLP markers were generated using the Zebrafish SSR search website, Massachusetts General Hospital, Charlestown USA. (). Fine mapping was performed using DNA from single embryos. BX294656.8 3p (forward, ; reverse, ); CR855270.17 p9 (forward, ; reverse, -3); BX927237 p4 (forward, ; reverse, -3); Zv8_scaffold2513.6 p2 (forward, ; reverse, -3). Listed SSLP markers were also used to genotype  embryos. The full length  ORF was amplified from cDNA of 3 dpf  mutant embryos and wild-type siblings (cnot8 p4 forward, ; reverse, ). PCR conditions: 94C 2 min; 94C 1 min; 60C 1 min, 72C 2 min, 30 cycles. Partial  ORF was amplified from genomic DNA confirming the premature stop codon in  mutants (cnot8stop p1 forward, ; reverse, ). PCR conditions: 94C 2 min; 94C 1 min; 60C 1 min, 72C 2 min, 30 cycles.
+
+SUB-TOPIC29
+----------
+
+Following WISH, tail clips for DNA extraction were performed and the tightly linked BX294656.8 3p, CR855270.17 and p9 BX927237 p4 SSLP markers were used for genotyping comparing  mutant and wild-type embryos respectively.
+
+digoxigenin-labeled sense probe was generated by linearizing the pCRIITOPO- plasmid with BamHI.  digoxigenin-labeled antisense probe was generated linearizing the pCRIITOPO- plasmid with EcoRV. In addition, the following digoxigenin-labeled antisense probes were used:  ,  ,  ,  ,  ,  , , and  ,  ,  ,  ,  ,  .
+
+Both methods were performed as previously described .
+
+Morpholinos were obtained from Gene Tools LLC. Knock down of maternal and zygotic Cnot8  achieved by coinjection of  () and  Morpholino at 1 cell stage in wild-type embryos.  Morpholino was previously described .
+
+SUB-TOPIC30
+----------
+
+Counts of  and DA cells were performed visually using DIC transmitted light image stacks documenting the regions of the brain in which dopaminergic neurons are located. Cell counts were performed using ImageJ or Zeiss ZEN software. For all cell count analyses (, , ), cell numbers of 5 embryos for each experimental condition were determined. The numbers reported in the bar graphs are average numbers determined using the Microsoft Excel "Average" function, and plotted with standard deviation calculated by Microsoft Excel. Statistical analyses were performed using the nonparametric Mann-Whitney test by the statistical analysis software GraphPad Prism version 6.0d for MacOS, GraphPad Software, La Jolla California USA, .
+
+SUB-TOPIC31
+----------
+
+Images of WISH gene expression data were analyzed to determine whether significant differences in WISH signal intensities exist when wildtype control and mutant or experimental embryos were compared. To compare WISH signal intensities, control and experimental embryos were fixed and processed together. For mutant and WT embryos, both were processed together in one reaction tube, and genotypes determined by PCR after alkaline phosphatase stain reaction. Thus, WISH and stain procedures were under exactly identical conditions for samples to be compared. For each analysis, control and experimental WISH embryos were photographed in one session under identical imaging conditions (same orientation of embryo, comparable focal plane, same lens, DIC, and light setting on microscope, same exposure setting on ZEISS Axiocam MRc camera utilizing Axiovision software). For control and experimental embryos, typically five to six each were documented (see number of embryos N reported with experiments).
+
+SUB-TOPIC32
+----------
+
+For quantification of stain intensities, images from experimental and control embryos to be compared were all assembled into one composite Photoshop (typically five controls on left side and five experimental embryos on right side) file, merged into one single layer separate from the background layer. Using the Photoshop "Levels" tool composite layers that did not fully use the 8-bit intensity range were adjusted linearly taking great care not to saturate pixels. The composite was flattened, and converted to grayscale (8 bit). The grayscale image was then inverted using the Image - Adjustments - Invert tool. These composite images were saved as TIFF files. TIFF files were opened using ImageJ 1.48o (64bit). For each individual image in the composite, the equivalent anatomical areas of WISH signal were marked using the freehand selection tool, drawn using a graph tablet (Bamboo Fun CTH-461; WACOM). Using the ImageJ Analyze - Measure command, the area as well as mean, minimum and maximum grey values were determined. Data were controlled such that maximum grey values did not exceed 254 (to exclude saturation). Data were transferred into Excel:mac2011.
+
+SUB-TOPIC33
+----------
+
+For statistical analysis, data were transferred to GraphPad Prism version 6.0d for MacOS. Mann-Whitney tests (unpaired non-Gaussian data, nonparametric test) were performed to calculate two-tailed P values. P<0.05 was considered significant.
+
+>>>>>>> f68012802ec03f2b41b2a2581099cea59490b71f
