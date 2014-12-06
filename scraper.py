@@ -74,7 +74,7 @@ def main(argv):
     seed = "0113812"
     i = 0 
     j = 0
-    while i < 10:
+    while i < 20:
         article_id = str(int(seed) + j).zfill(len(seed))
         link = "http://dx.plos.org/10.1371/journal.pone." + article_id
         j += 1

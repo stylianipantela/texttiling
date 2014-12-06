@@ -321,8 +321,8 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
         inputText: a string of the initial (unsanitized) text
 
     Returns:
-        A list of lists T such that T[i] is a list of paragraphs that occur
-        within one subtopic.
+        A list of indicies of section breaks. Index i will be in this list if
+        there is a topic break after the ith paragraph. 
 
     Raises:
         None
@@ -335,6 +335,8 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     assert len(paragraphs) == len(pLocs) + 1
     splitIndices = [pLocs.index(b) + 1 for b in boundaries]
 
+    # uncomment this if you want the text to actually be written
+    """
     startIndex = 0
 
     # append section between subtopic boundaries as new TextTile
@@ -350,15 +352,19 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
         f.write('----------\n\n')
         for paragraph in textTile:
             f.write(paragraph + '\n\n')
+    """    
     return splitIndices
 
 def precision_recall(original_breaks, new_breaks):
     # assumes input has the topic changes
     new_breaks_set = set(new_breaks)
     original_breaks_set = set(original_breaks)
-
-    precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
-    recall = len(new_breaks_set.intersection(original_breaks_set)) / len(original_breaks)
+    
+    precision = recall = 0
+    if len(new_breaks_set) > 0:
+        precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
+    if len(original_breaks) > 0:
+        recall = len(new_breaks_set.intersection(original_breaks_set)) / len(original_breaks)
     #print "Precision is " + str(precision)
     #print "Recall is " + str(recall)
     return (precision, recall)
@@ -398,33 +404,21 @@ def window_diff(true_ls, pred_ls, k, N):
 def write_results(out, orig_breaks, pred_breaks, num_pgraphs, k):
     precision, recall = precision_recall(orig_breaks, pred_breaks)
     wdiff = window_diff(orig_breaks, pred_breaks, k, num_pgraphs)
-    out.write(str(precision) + "," + str(recall) + "," + str(wdiff) + ",\n")
+    #out.write(str(precision) + "," + str(recall) + "," + str(wdiff) + ",\n")
+    return (precision, recall, wdiff)
 
-def main(argv):
-    '''
-    Tokenize a file and compute gap scores using the algorithm described
-    in Hearst's TextTiling paper.
-
-    Args :
-        argv[1] : The name of the file to analyze
-    Returns:
-        None
-    Raises :
-        None
-    '''
-    if (len(argv) != 3):
-        print("\nUsage: python texttiling.py <infile> <outfile> \n")
-        sys.exit(0)
-
-    # somewhat arbitrarily chosen constants for pseudo-sentence size
-    # and block size, respectively.
-    w = 20
-    k = 10
-
+def run_tests(outfile, w, k):
     input_files = glob.glob("articles/*.txt")
-    out = open(argv[2], 'w')
+    out = open(outfile, 'a')
+    out.write("w = " + str(w) + ", k = " + str(k) + "\n")
+    precision1 = precision2 = precision3 = precision4 = 0
+    recall1 = recall2 = recall3 = recall4 = 0
+    wdiff1 = wdiff2 = wdiff3 = wdiff4 = 0
 
+    counter = 0
     for file in input_files:
+        print "processing input " + str(counter) + "..."
+        counter += 1
         with open(file, 'r') as f:
             num_breaks = int(f.readline())
             original_section_breaks = []
@@ -437,8 +431,8 @@ def main(argv):
             scores2 = vocabulary_introduction(token_sequences, w)
             boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
             boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
-            pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
-            pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
+            pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, outfile)
+            pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, outfile)
             ttt = TextTilingTokenizer()
             tiles = ttt.tokenize(text)
             pred_breaks3 = []
@@ -447,14 +441,74 @@ def main(argv):
                 tile = tile.strip()           
                 paragraph_count += tile.count("\n\n") + 1
                 pred_breaks3.append(paragraph_count)            
-
+           
+            prob = float(len(original_section_breaks))/float(len(paragraph_breaks))
             num_pgraphs = len(paragraph_breaks)
-            wk = int((len(paragraph_breaks) + 1)/(2 * (len(original_section_breaks) + 1)))
-            write_results(out, original_section_breaks, pred_breaks1, num_pgraphs, wk)
-            write_results(out, original_section_breaks, pred_breaks2, num_pgraphs, wk)
-            write_results(out, original_section_breaks, pred_breaks3, num_pgraphs, wk)
+            pred_breaks4 = random_breaks(prob, num_pgraphs)
 
+            wk = int((num_pgraphs + 1)/(2 * (len(original_section_breaks) + 1)))
+
+            (p,r,wd) = write_results(out, original_section_breaks, pred_breaks1, num_pgraphs, wk)
+            precision1 += p
+            recall1 += r
+            wdiff1 += wd
+            (p,r,wd) = write_results(out, original_section_breaks, pred_breaks2, num_pgraphs, wk)
+            precision2 += p
+            recall2 += r
+            wdiff2 += wd
+            (p,r,wd) = write_results(out, original_section_breaks, pred_breaks3, num_pgraphs, wk)
+            precision3 += p
+            recall3 += r
+            wdiff3 += wd
+            (p,r,wd) = write_results(out, original_section_breaks, pred_breaks4, num_pgraphs, wk)
+            precision4 += p
+            recall4 += r
+            wdiff4 += wd
+            #out.write("\n")
+
+    n = len(input_files)
+    out.write("block     : " + str(precision1 / n) + ", " + 
+              str(recall1 / n) + ", " + str(wdiff1 / n) + ",\n")
+    out.write("vocab     : " + str(precision2 / n) + ", " + 
+              str(recall2 / n) + ", " + str(wdiff2 / n) + ",\n")
+    out.write("nltk block: " + str(precision3 / n) + ", " + 
+              str(recall3 / n) + ", " + str(wdiff3 / n) + ",\n")
+    out.write("random    : " + str(precision4 / n) + ", " + 
+              str(recall4 / n) + ", " + str(wdiff4 / n) + ",\n")
     out.close()
+
+
+def main(argv):
+    '''
+    Tokenize a file and compute gap scores using the algorithm described
+    in Hearst's TextTiling paper.
+
+    Args :
+        argv[1] : The name of the file where output should be written
+    Returns:
+        None
+    Raises :
+        None
+    '''
+    if (len(argv) != 2):
+        print("\nUsage: python texttiling.py <outfile> \n")
+        sys.exit(0)
+    
+    # constants for pseudo-sentence size and block size, respectively.
+    w_start = 20
+    w_end = 20
+    k_start = 10
+    k_end = 10
+    increment = 2
+
+    # empty the file
+    with open(argv[1], "w"):
+        pass 
+
+    for w in xrange(w_start, w_end+1, increment):
+        for k in xrange(k_start, k_end+1, increment):  
+            print "w = " + str(w) + ", k = " + str(k)
+            run_tests(argv[1], w, k)
 
 
 if __name__ == "__main__":
