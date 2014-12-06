@@ -26,19 +26,20 @@ Setup Instructions
 Running Instructions
 ---- -- - - - - -  -   -
 1) cd into the project directory
-2) Run python "mu_project_part1.py <infile> <tokens_outfile> <scores_outfile>"
-    a) The infile is the file containing the original text
-    b) The tokens_outfile is the file where you want the tokenized 
-       pseudo-sentences to be written.
-    c) The scores_outfile is the file where you want the computed 
-       block similarity scores to be written.
+2) Run: python texttiling.py <outfile>
+    a) The scores_outfile is the file where you want the 
+       results to be written
 
-    e.g., mu_project_party1.py infile.txt, tokens.txt, scores.txt
+    e.g., python texttiling.py outfile.txt
 
 
 ---- -- - - - - -  -   -
-Implementation of the Texttiling Algorithm
+Scraping Articles
 ---- -- - - - - -  -   -
-We decided to split our work so that we all have an clear idea of how 
-to specifically implement one of the parts above while looking at the 
-rest as well. 
+1) If you would like to scrape other articles using scraper.py,
+   you can do that by first installing BeautifulSoup.
+2) Then change the 'seed' value in the main() function of scraper.py
+3) You can also adjust the number of articles you scrape (N).
+4) Run: python scraper.py
+5) Verify that the articles were correctly scraped and placed in
+   the articles folder.
