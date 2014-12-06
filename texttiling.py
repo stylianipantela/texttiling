@@ -176,7 +176,6 @@ def vocabulary_introduction(token_sequences, w):
   # special case on last element
   b1 = len(set(token_sequences[len(token_sequences)-1]).difference(new_words1))
   scores.append(b1/w2)
-
   return scores
 
 def getDepthCutoff(lexScores, liberal=True):
@@ -186,17 +185,13 @@ def getDepthCutoff(lexScores, liberal=True):
     Args:
         lexScores: list of lexical scores for each token-sequence gap
         liberal: True IFF liberal criterion will be used for determining cutoff
-
     Returns:
         A float representing the depth cutoff score
-
     Raises:
         None
     """
-
     mean = np.mean(lexScores)
     stdev = np.std(lexScores)
-
     return mean - stdev if liberal else mean - stdev / 2
 
 def getDepthSideScore(lexScores, currentGap, left):
@@ -207,16 +202,13 @@ def getDepthSideScore(lexScores, currentGap, left):
         lexScores: list of lexical scores for each token-sequence gap
         currentGap: index of gap for which to get depth side score
         left: True IFF the depth score for left side is desired
-
     Returns:
         A float representing the depth score for the specified side and gap,
         calculated by finding the "peak" on the side of the gap and returning
         the difference between the lexical scores of the peak and gap.
-
     Raises:
         None
     """
-
     depthScore = 0
     i = currentGap
 
@@ -231,7 +223,6 @@ def getDepthSideScore(lexScores, currentGap, left):
         # do not go beyond bounds of gap!
         if (i < 0 and left) or (i == len(lexScores) and not left):
             break
-
     return depthScore
 
 def getGapBoundaries(lexScores):
@@ -240,14 +231,11 @@ def getGapBoundaries(lexScores):
 
     Args:
         lexScores: list of lexical scores for each token-sequence gap
-
     Returns:
         A list of gaps (identified by index) that are considered boundaries.
-
     Raises:
         None
     """
-
     boundaries = []
     cutoff = getDepthCutoff(lexScores)
 
@@ -260,7 +248,6 @@ def getGapBoundaries(lexScores):
         depthScore = depthLeftScore + depthRightScore
         if depthScore >= cutoff:
             boundaries.append(i)
-
     return boundaries
 
 def getBoundaries(lexScores, pLocs, w):
@@ -271,15 +258,12 @@ def getBoundaries(lexScores, pLocs, w):
         lexScores: list of lexical scores for each token-sequence gap
         pLocs: list of token indices such that paragraph breaks occur after them
         w: number of tokens to be grouped into each token-sequence
-
     Returns:
         A sorted list of unique paragraph locations (measured in terms of token
         indices) after which a subtopic boundary occurs.
-
     Raises:
         None
     """
-
     # convert boundaries from gap indices to token indices
     gapBoundaries = getGapBoundaries(lexScores)
     tokBoundaries = [w * (gap + 1) for gap in gapBoundaries]
@@ -296,6 +280,7 @@ def getBoundaries(lexScores, pLocs, w):
 def random_breaks(prob, possible_breaks):
     """
     Return a list of subtopic boundaries, chosen randomly.
+    
     Args:
         prob: Probability of choosing a given paragraph break to be a subtopic
         boundary.
@@ -319,15 +304,12 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
         boundaries: list of paragraph locations where subtopic boundaries occur
         pLocs: list of token indices such that paragraph breaks occur after them
         inputText: a string of the initial (unsanitized) text
-
     Returns:
         A list of indicies of section breaks. Index i will be in this list if
         there is a topic break after the ith paragraph. 
-
     Raises:
         None
     """
-
     textTiles = []
     paragraphs = [s.strip() for s in inputText.splitlines()]
     paragraphs = [s for s in paragraphs if s != ""]
@@ -356,6 +338,17 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     return splitIndices
 
 def precision_recall(original_breaks, new_breaks):
+    """
+    Calculate precision and recall metrics.
+
+    Args:
+        original_breaks: list of actual boundaries in the text.
+        new_breaks: list of predicted boundaries in the text.
+    Returns:
+        a tuple containing the precision and recall, in that order.
+    Raises:
+        None.
+    """
     # assumes input has the topic changes
     new_breaks_set = set(new_breaks)
     original_breaks_set = set(original_breaks)
@@ -402,12 +395,44 @@ def window_diff(true_ls, pred_ls, k, N):
     return metric
 
 def write_results(out, orig_breaks, pred_breaks, num_pgraphs, k):
+    """
+    A helper function that computes precision/recall and WindowDiff 
+    and writes the results to some outfile. The writing is currently
+    commented out for the sake of brevity in the results.
+
+    Args:
+        out: the file pointer used to write the result
+        orig_breaks: list of actual boundaries in the text.
+        pred_breaks: list of predicted boundaries in the text.
+        num_pgraphs: number of paragraph breaks in the text.
+        k: length of window as defined in the paper.
+    Returns:
+       A tuple containing precision, recall, and WindowDiff metric
+       in that order.
+    Raises:
+        None.
+    """    
     precision, recall = precision_recall(orig_breaks, pred_breaks)
     wdiff = window_diff(orig_breaks, pred_breaks, k, num_pgraphs)
     #out.write(str(precision) + "," + str(recall) + "," + str(wdiff) + ",\n")
     return (precision, recall, wdiff)
 
 def run_tests(outfile, w, k):
+    """
+    Helper function that runs the TextTiling on the entire corpus
+    for a given set of parameters w and k, and writes the average 
+    statistics to outfile. The corpus is assumed to live in the "articles"
+    directory, which must be in the same folder as this python file.
+
+    Args:
+        outfile: the name of the output file
+        w: pseudo-sentence size.
+        k: length of window as defined in the paper.
+    Returns:
+        None
+    Raises:
+        None.
+    """
     input_files = glob.glob("articles/*.txt")
     out = open(outfile, 'a')
     out.write("w = " + str(w) + ", k = " + str(k) + "\n")
@@ -426,6 +451,7 @@ def run_tests(outfile, w, k):
                 original_section_breaks.append(int(f.readline()))
             text = f.read()
 
+            # 1) do our block comparison and 2) vocabulary introduction
             token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
             scores1 = block_score(k, token_sequences, unique_tokens)
             scores2 = vocabulary_introduction(token_sequences, w)
@@ -433,6 +459,8 @@ def run_tests(outfile, w, k):
             boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
             pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, outfile)
             pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, outfile)
+            
+            # 3) do nltk's textTiling
             ttt = TextTilingTokenizer()
             tiles = ttt.tokenize(text)
             pred_breaks3 = []
@@ -440,14 +468,15 @@ def run_tests(outfile, w, k):
             for tile in tiles:
                 tile = tile.strip()           
                 paragraph_count += tile.count("\n\n") + 1
-                pred_breaks3.append(paragraph_count)            
-           
+                pred_breaks3.append(paragraph_count)  
+          
+            # 4) do random textTiling
             prob = float(len(original_section_breaks))/float(len(paragraph_breaks))
             num_pgraphs = len(paragraph_breaks)
             pred_breaks4 = random_breaks(prob, num_pgraphs)
 
+            # get metrics
             wk = int((num_pgraphs + 1)/(2 * (len(original_section_breaks) + 1)))
-
             (p,r,wd) = write_results(out, original_section_breaks, pred_breaks1, num_pgraphs, wk)
             precision1 += p
             recall1 += r
@@ -466,22 +495,22 @@ def run_tests(outfile, w, k):
             wdiff4 += wd
             #out.write("\n")
 
+    # write out the average statistics
     n = len(input_files)
     out.write("block     : " + str(precision1 / n) + ", " + 
               str(recall1 / n) + ", " + str(wdiff1 / n) + ",\n")
     out.write("vocab     : " + str(precision2 / n) + ", " + 
               str(recall2 / n) + ", " + str(wdiff2 / n) + ",\n")
-    out.write("nltk block: " + str(precision3 / n) + ", " + 
+    out.write("nltk-block: " + str(precision3 / n) + ", " + 
               str(recall3 / n) + ", " + str(wdiff3 / n) + ",\n")
     out.write("random    : " + str(precision4 / n) + ", " + 
               str(recall4 / n) + ", " + str(wdiff4 / n) + ",\n")
     out.close()
 
-
 def main(argv):
     '''
     Tokenize a file and compute gap scores using the algorithm described
-    in Hearst's TextTiling paper.
+    in Hearst's TextTiling paper. Options to vary w and k.
 
     Args :
         argv[1] : The name of the file where output should be written
@@ -505,6 +534,7 @@ def main(argv):
     with open(argv[1], "w"):
         pass 
 
+    # run texttiling for different values of w and k.
     for w in xrange(w_start, w_end+1, increment):
         for k in xrange(k_start, k_end+1, increment):  
             print "w = " + str(w) + ", k = " + str(k)

@@ -1,7 +1,8 @@
 #!/usr/bin/python
 """
-Accesses articles through plosOne
-
+Accesses articles through plosOne, cleans html to get the text only.
+Also records the number of section breaks and the locations of these
+breaks.
 """
 
 from bs4 import BeautifulSoup
@@ -70,11 +71,15 @@ def get_text(url, outfile):
     return True
     
 def main(argv):
-    # use plos one!
+    # seed is the starting article id. We will just increment 
+    # this id and hope to hit more articles, since they are
+    # labelled sequentially.
     seed = "0113812"
     i = 0 
     j = 0
-    while i < 20:
+    N = 20
+    # we are guaranteed to get N articles.
+    while i < N:
         article_id = str(int(seed) + j).zfill(len(seed))
         link = "http://dx.plos.org/10.1371/journal.pone." + article_id
         j += 1
