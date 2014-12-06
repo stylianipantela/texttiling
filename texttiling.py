@@ -32,8 +32,11 @@ from nltk.stem.wordnet import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import TextTilingTokenizer
 
+from plot import plot_ws, plot_ks
+
 lemmatizer = WordNetLemmatizer()
 stop_words = stopwords.words('english')
+BLOCK_SCORES, VOCABULARY_INTRODUCTION_SCORES = 0, 1
 
 def tokenize_string(input_str, w):
     '''
@@ -325,12 +328,13 @@ def writeTextTiles(boundaries, pLocs, inputText, outfile):
     # tack on remaining paragraphs in last subtopic
     textTiles.append(paragraphs[startIndex:])
     
-    f = open(outfile, 'w')
-    for i, textTile in enumerate(textTiles):
-        f.write('SUB-TOPIC' + str(i) + '\n')
-        f.write('----------\n\n')
-        for paragraph in textTile:
-            f.write(paragraph + '\n\n')
+    if (outfile != ''):
+        f = open(outfile, 'w')
+        for i, textTile in enumerate(textTiles):
+            f.write('SUB-TOPIC' + str(i) + '\n')
+            f.write('----------\n\n')
+            for paragraph in textTile:
+                f.write(paragraph + '\n\n')
     return splitIndices
 
 def precision_recall(original_breaks, new_breaks):
@@ -351,10 +355,14 @@ def precision_recall(original_breaks, new_breaks):
     new_breaks_set = set(new_breaks)
     original_breaks_set = set(original_breaks)
 
-    precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
+    precision = 0
+    if (len(new_breaks_set) != 0):
+        precision = len(new_breaks_set.intersection(original_breaks_set)) / len(new_breaks_set)
+
     recall = len(new_breaks_set.intersection(original_breaks_set)) / len(original_breaks)
     print "Precision is " + str(precision)
     print "Recall is " + str(recall)
+    return (precision, recall)
 
 def window_diff(true_ls, pred_ls, k, N):
     """
@@ -388,6 +396,143 @@ def window_diff(true_ls, pred_ls, k, N):
     print "WindowDiff metric is " + str(metric)
     return metric
 
+def test_w(text, original_section_breaks, k, score_method, filename):
+    """
+    Tests the evaluation metrics (precision, recall, window difference) for different values of w
+    for both score methods
+
+    Args:
+        text: the input text to be processed
+        original_section_breaks: the original breaks of subtopics
+        k: the block size, as defined in the paper (Hearst 1997) 
+        score_method: 0 for blocks and 1 for vocab
+        filename: file to save results
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    with open(filename, 'w+') as f: 
+        f.write("w, precision, recall, window_difference\n")
+        for w in range(10,300,10):
+            print w
+            token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
+            
+            pre_breaks = []
+            if (score_method == 0):
+                scores = block_score(k, token_sequences, unique_tokens)
+                boundaries = getBoundaries(scores, paragraph_breaks, w)
+                pred_breaks = writeTextTiles(boundaries, paragraph_breaks, text, '')
+            else:
+                scores = vocabulary_introduction(token_sequences, w)
+                boundaries = getBoundaries(scores, paragraph_breaks, w)
+                pred_breaks = writeTextTiles(boundaries, paragraph_breaks, text, '')
+            
+            # get precision and recall
+            precision, recall = precision_recall(original_section_breaks, pred_breaks)
+            wd = window_diff(original_section_breaks, pred_breaks, k, len(paragraph_breaks))
+            f.write("%d, %f, %f, %f\n" % (w, precision, recall, wd))
+        f.close()
+
+def test_k(text, original_section_breaks, w, score_method, filename):
+    """
+    Tests the evaluation metrics (precision, recall, window difference) for different values of k
+    for both score methods
+
+    Args:
+        text: the input text to be processed
+        original_section_breaks: the original breaks of subtopics
+        w: the sequence size 
+        score_method: 0 for blocks and 1 for vocab
+        filename: file to save results
+
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    with open(filename, 'w+') as f: 
+        f.write("k, precision, recall, window_difference\n")
+        token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
+        pre_breaks = []
+        for k in range(10,300,10):
+            if (score_method == 0):
+                scores = block_score(k, token_sequences, unique_tokens)
+                boundaries = getBoundaries(scores, paragraph_breaks, w)
+                pred_breaks = writeTextTiles(boundaries, paragraph_breaks, text, '')
+            else:
+                scores = vocabulary_introduction(token_sequences, w)
+                boundaries = getBoundaries(scores, paragraph_breaks, w)
+                pred_breaks = writeTextTiles(boundaries, paragraph_breaks, text, '')
+            
+            # get precision and recall
+            precision, recall = precision_recall(original_section_breaks, pred_breaks)
+            wd = window_diff(original_section_breaks, pred_breaks, k, len(paragraph_breaks))
+            f.write("%d, %f, %f, %f\n" % (k, precision, recall, wd))
+        f.close()
+
+def texttiling(infile, outfile, w, k, score_method):
+    """
+    Implements Texttling algorithm
+
+    Args:
+        infile: input file
+        outfile: produced output after texttiling is applied
+        w: size of a token sequence
+        k: size of window
+        score_method: 0 for blocks and 1 for vocab
+    Returns:
+        None
+
+    Raises:
+        None
+    """
+    with open(infile, 'r') as f:
+        # somewhat arbitrarily chosen constants for pseudo-sentence size
+        # and block size, respectively.
+        num_breaks = int(f.readline())
+        original_section_breaks = []
+        for i in xrange(num_breaks):
+            original_section_breaks.append(int(f.readline()))
+        text = f.read()
+
+        token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
+
+        if (score_method == BLOCK_SCORES):
+            scores1 = block_score(k, token_sequences, unique_tokens)
+            boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
+            pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, outfile)
+            precision_recall(original_section_breaks, pred_breaks1)
+            window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
+        else:
+            scores2 = vocabulary_introduction(token_sequences, w)
+            boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
+            pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, outfile)  
+            precision_recall(original_section_breaks, pred_breaks2)
+            window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
+
+        ttt = TextTilingTokenizer()
+        tiles = ttt.tokenize(text)
+        nltk_section_breaks = []
+        paragraph_count = 0
+        for tile in tiles:
+            tile = tile.strip()           
+            paragraph_count += tile.count("\n\n") + 1
+            nltk_section_breaks.append(paragraph_count)
+        # print len(tiles)
+        # print nltk_section_breaks
+
+        precision_recall(original_section_breaks, nltk_section_breaks)
+        window_diff(original_section_breaks, nltk_section_breaks, k, len(paragraph_breaks))
+
+        # test various ws and ks
+        # test_k(text, original_section_breaks, w, BLOCK_SCORES, 'test_k_block.csv')
+        # test_k(text, original_section_breaks, w, VOCABULARY_INTRODUCTION_SCORES, 'test_k_vocabulary.csv')
+
+
 def main(argv):
     '''
     Tokenize a file and compute gap scores using the algorithm described
@@ -404,46 +549,13 @@ def main(argv):
         print("\nUsage: python texttiling.py <infile> <outfile> \n")
         sys.exit(0)
 
-    with open(argv[1], 'r') as f:
-        # somewhat arbitrarily chosen constants for pseudo-sentence size
-        # and block size, respectively.
-        w = 20
-        k = 10
-        num_breaks = int(f.readline())
-        original_section_breaks = []
-        for i in xrange(num_breaks):
-            original_section_breaks.append(int(f.readline()))
-        text = f.read()
+    texttiling(argv[1], argv[2], 50, 15, BLOCK_SCORES)
+    
+    # plot_ks('test_k_block')
+    # plot_ws('test_w_block')
+    plot_ks('test_k_vocabulary')
+    plot_ws('test_w_vocabulary')
 
-        token_sequences, unique_tokens, paragraph_breaks = tokenize_string(text, w)
-        scores1 = block_score(k, token_sequences, unique_tokens)
-        scores2 = vocabulary_introduction(token_sequences, w)
-        boundaries1 = getBoundaries(scores1, paragraph_breaks, w)
-        boundaries2 = getBoundaries(scores2, paragraph_breaks, w)
-        pred_breaks1 = writeTextTiles(boundaries1, paragraph_breaks, text, argv[2])
-        pred_breaks2 = writeTextTiles(boundaries2, paragraph_breaks, text, argv[2])
-        
-        # get precision and recall
-        # print len(pred_breaks1)
-        precision_recall(original_section_breaks, pred_breaks1)
-        window_diff(original_section_breaks, pred_breaks1, k, len(paragraph_breaks))
-        # print len(pred_breaks2)
-        precision_recall(original_section_breaks, pred_breaks2)
-        window_diff(original_section_breaks, pred_breaks2, k, len(paragraph_breaks))
-
-        ttt = TextTilingTokenizer()
-        tiles = ttt.tokenize(text)
-        nltk_section_breaks = []
-        paragraph_count = 0
-        for tile in tiles:
-            tile = tile.strip()           
-            paragraph_count += tile.count("\n\n") + 1
-            nltk_section_breaks.append(paragraph_count)
-        # print len(tiles)
-        # print nltk_section_breaks
-
-        precision_recall(original_section_breaks, nltk_section_breaks)
-        window_diff(original_section_breaks, nltk_section_breaks, k, len(paragraph_breaks))
 if __name__ == "__main__":
   main(sys.argv)
 
